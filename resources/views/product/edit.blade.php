@@ -38,7 +38,7 @@
                     <label for="cars">Loại sản phẩm: </label>
                     <select id="" name="name_category" class="form-control">
                         @foreach ($categories as $category)
-                        <option value="<?= $category['id_category'] ?>"><?= $category['name_category'] ?></option>
+                        <option value="<?= $category['name_category'] ?>"><?= $category['name_category'] ?></option>
                         @endforeach
                       
                     </select>

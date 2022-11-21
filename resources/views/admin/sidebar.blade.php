@@ -14,7 +14,7 @@
                   </div>
                   <div class="info">
                     <?php
-                      $message = Session::get('account_user');
+                      $message = Session::get('admin_username');
                     ?>
                     <a href="#" class="d-block"><?php 
                     if($message){echo $message;
@@ -92,7 +92,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('user.logout') }}" class="nav-link">
+            <a href="{{URL::to('/admin-logout')}}" class="nav-link">
                 <i class="fa-solid fa-right-from-bracket"></i>
               <p>
                 Logout

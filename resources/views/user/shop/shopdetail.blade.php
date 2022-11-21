@@ -11,10 +11,30 @@
 @section('content')
 <section class="product-details spad">
     <div class="container">
+        <?php
+                $error = Session::get('error');
+                if($error){
+                    echo ' 
+                <div class="alert alert-success">
+                <span class="text-alert">'.$error.'</span>
+                </div>
+                ';
+                    Session::put('error',null);
+                }
+
+                ?>
+        <form>
         <div class="row">
+                <input type="hidden" name="" value="{{ $products->id_product }}" class="cart_product_id_{{ $products->id_product }}">
+                <input type="hidden" name="" value="{{ $products->name_product }}" class="cart_product_name_{{ $products->id_product }}">
+                <input type="hidden" name="" value="{{ $products->image1 }}" class="cart_product_img_{{  $products->id_product}}">
+                <input type="hidden" name="" value="{{ $products->price_sale }}" class="cart_product_price_sale_{{ $products->id_product }}">
+                <input type="hidden" name="" value="{{ $products->count_product }}" class="cart_product_count_{{ $products->id_product }}">
+                {{-- <input type="hidden" name="" value="1" class="cart_product_qty_{{ $products->id_product }}"> --}}
             <div class="col-lg-6 col-md-6">
                 <div class="product__details__pic">
                     <div class="product__details__pic__item">
+                        
                         <img class="product__details__pic__item--large"
                             src="{{ asset('img/'.$products['image1'].'') }}" alt="">
                     </div>
@@ -30,6 +50,8 @@
                     </div>
                 </div>
             </div>
+       
+
             <div class="col-lg-6 col-md-6">
                 <div class="product__details__text">
                     <h3>{{ $products['name_product'] }}</h3>
@@ -50,12 +72,14 @@
                     <div class="product__details__quantity">
                         <div class="quantity">
                             <div class="pro-qty">
-                                <input type="text" value="1">
+                                <input type="text"   name="qty"  class="cart_product_qty_{{ $products->id_product }}" > 
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="primary-btn">ADD TO CARD</a>
+                    <a type="button" style="padding: 13px 28px 14px; color: white;
+                    background: #7fad39;" data-id_product="{{  $products->id_product}}" class="add_to_cart">ADD TO CARD</a>
                     <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+               
                     <ul>
                         <li><b>Availability</b> <span>In Stock</span></li>
                         <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
@@ -152,6 +176,7 @@
                 </div>
             </div>
         </div>
+    </form>
     </div>
 </section>
 

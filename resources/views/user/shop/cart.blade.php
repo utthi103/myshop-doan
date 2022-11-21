@@ -12,11 +12,38 @@
 <section class="shoping-cart spad">
     <div class="container">
         <div class="row">
+          
             <div class="col-lg-12">
+                <?php
+                $message = Session::get('message');
+                $update = Session::get('update');
+                if($message){
+                    echo ' 
+                <div class="alert alert-success">
+                <span class="text-alert">'.$message.'</span>
+                </div>
+                ';
+                    Session::put('message',null);
+                }
+
+                if($update){
+                    echo ' 
+                <div class="alert alert-success">
+                <span class="text-alert">'.$update.'</span>
+                </div>
+                ';
+                    Session::put('update',null);
+                }
+                ?>
                 <div class="shoping__cart__table">
                     <?php
+                         $total = 0;
                     $carts = Cart::content();
-   ?>
+   ?>   
+                    <form action="{{ URL::to('/update_cart') }}" method="POST">
+                        @csrf
+
+                   
                     <table class="table table-bordered" style="	table-layout:fixed;
                     width:100%; 	border-collapse: collapse; text-align: center">
                         <thead style="    background: #e1e1e1;">
@@ -30,37 +57,49 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($carts as $cart)
+                            <?php
+                            
+                                $carts = Session::get('cart');
+                            ?>
+                            @foreach ($carts as $key=>$cart)
+                            <?php
+                        
+                        $subtotal = $cart['qty']*$cart['price_product'];
+                        $total = $total + $subtotal;
+                            ?>
                                   <tr>
                                 <td class="shoping__cart__item" style="text-align: center">
-                                    <img src="{{ asset('img/'.$cart->options->img.'') }}" width="100px" alt="">
+                                    <img src="{{ asset('img/'.$cart['img_product'].'') }}" width="100px" alt="">
                                    
                                 </td>
                                 <td class="" style="vertical-align: middle;">
-                                    <h5>{{ $cart->name }}</h5>
+                                    {{-- <h5>{{ number_format($cart['name_product'],0,',','.')}}</h5> --}}
+                                    <h5>{{ $cart['name_product'] }}</h5>
                                  </td>
                                 <td class="shoping__cart__price">
-                                   ${{ $cart->price }}
+                                   {{-- ${{ $cart['price_product'] }} --}}
+                                   ${{ number_format($cart['price_product'],0,',','.')}}
                                 </td>
                                 <td class="shoping__cart__quantity" style="vertical-align: middle;">
                                     <div class="quantity">
-                                        <div class="pro-qty">
-                                            
-                                           <a href="{{ route('update.cart',['rowId'=>$cart->rowId]) }}"><span class="dec qtybtn" style="color: #691818; margin-left: -18px;">-</span></a> 
-                                         <input type="text" value="{{ $cart->qty }}">
-                                         <a href="{{ route('update.cart',['rowId'=>$cart->rowId]) }}">  <span class="inc qtybtn" style="color: #521212; margin-left: -18px;">+</span></a>
+                                        {{-- <input type="number" min  value="{{ $cart['qty'] }}" name="qty_product[{{ $cart['session_id'] }}]"> --}}
+
+                                        <div class="pro-qty">                                          
+                                         <input type="text"  value="{{ $cart['qty'] }}" name="qty_product[{{ $cart['session_id'] }}]">
                                         </div>
                                     </div>
+
                                 </td>
                                 <td class="shoping__cart__total">
                                    <?php
-                                        $subtotal = $cart->qty*$cart->price;
+                                        // $subtotal = $cart['qty']*$cart['price_product'];
+                                        // echo '$'.number_format($subtotal,0,',','.');
                                         echo $subtotal;
                                    ?>
                                 </td>
                                 <td class="shoping__cart__item__close" style="line-height: 120px; text-align: center">
-                                    <a href="{{ route('delete.cart',['rowId'=>$cart->rowId]) }}"><span class="fa-solid fa-xmark"></span></a>
-                                    {{-- <a href="{{ route('delete.cart',['rowId'=>$cart->rowId]) }}"><i class="fa-solid fa-xmark"></i></a> --}}
+                                    {{-- <a href="{{ route('delete.cart',['rowId'=>$cart->rowId]) }}"></a> --}}
+                                    <a href="{{ URL::to('/delete_card/'.$cart['session_id']) }}"><span style="color: #23711a;" class="fa-solid fa-xmark"></span></i></a>
                                    
                                 </td>
                             </tr> 
@@ -74,10 +113,11 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="shoping__cart__btns">
-                    <a href="#" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
-                    <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
-                        Upadate Cart</a>
+                    <a href="{{ route('product.listproduct') }}" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
+                    <button style="border-color: white;" type="submit" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
+                        Upadate Cart</button>
                 </div>
+            </form>
             </div>
             <div class="col-lg-6">
                 <div class="shoping__continue">
@@ -94,10 +134,16 @@
                 <div class="shoping__checkout">
                     <h5>Cart Total</h5>
                     <ul>
-                        <li>Subtotal <span>{{ Cart::subtotal() }}</span></li>
-                        <li>Total <span>{{ Cart::subtotal() }}</span></li>
+                        <li>Subtotal <span><?php
+                        //   echo '$'.number_format($total,0,',','.');
+                        echo $total;
+                            ?></span></li>
+                        <li>Total <span><?php
+                                //  echo '$'.number_format($total,0,',','.');
+                                echo $total;
+                                ?></span></li>
                     </ul>
-                    <a href="{{ route('user.checkout') }}" class="primary-btn">PROCEED TO CHECKOUT</a>
+                    <a href="{{ URL::to('/show_checkout') }}" class="primary-btn">PROCEED TO CHECKOUT</a>
                 </div>
             </div>
         </div>

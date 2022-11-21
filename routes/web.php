@@ -2,32 +2,25 @@
 
 use Illuminate\Support\Facades\Route;
 
+// Admin
+// form login admin
+Route::get('/form_login', function () {
+    return view('admin.login');
+});
 
+
+// button login
+// Route::post('/admin-login','loginController@login_admin');
+Route::post('admin-login', [\App\Http\Controllers\loginController::class, 'login_admin']);
+// logout
+Route::get('admin-logout', [\App\Http\Controllers\loginController::class, 'logout']);
+// trang chu admin
 Route::get('/admin', function () {
     return view('layouts.admin');
-    // return "Xin chào";
 
 });
 
-// Route::get('/','loginController@display');
-Route::get('/', function () {
-    return view('layouts.login');
-});
-
-
-Route::prefix('user')->group(function () {
-    Route::post('/sign',[
-        'as'=>'user.sign',
-        'uses'=>'App\Http\Controllers\loginController@login'
-    ] );
-
-    Route::get('/logout',[
-        'as'=>'user.logout',
-        'uses'=>'App\Http\Controllers\loginController@logout'
-    ] );
-});
-
-
+// quan ly danh muc
 Route::prefix('category')->group(function () {
     Route::get('/create',[
         'as'=>'category.create',
@@ -56,6 +49,7 @@ Route::prefix('category')->group(function () {
     ] );
 });
 
+// quan ly san pham
 Route::prefix('product')->group(function () {
     Route::get('/tableproduct',[
         'as'=>'product.tableproduct',
@@ -90,6 +84,8 @@ Route::prefix('product')->group(function () {
     ] );
 });
 
+// quan ly hoa don
+
 Route::prefix('order')->group(function () {
     Route::get('/display',[
         'as'=>'product.order',
@@ -105,13 +101,43 @@ Route::prefix('order')->group(function () {
         'uses'=>'App\Http\Controllers\orderController@delete'
     ] );
 
-    Route::get('/detail/{id_detail}',[
+    Route::get('/detail/{id_order}',[
         'as'=>'order.detail',
         'uses'=>'App\Http\Controllers\orderController@detail'
     ] );
     
 
 });
+
+
+
+
+// user
+Route::get('/form_signin', function () {
+    return view('layouts.login');
+});
+
+// buttion login
+Route::post('user-login', [\App\Http\Controllers\userloginController::class, 'login']);
+// logout
+Route::get('user-logout', [\App\Http\Controllers\userloginController::class, 'logout']);
+
+
+// trang chu user
+Route::get('', [\App\Http\Controllers\shopController::class, 'home']);
+
+Route::prefix('/')->group(function () {
+    Route::post('/sign',[
+        'as'=>'user.sign',
+        'uses'=>'App\Http\Controllers\loginController@login'
+    ] );
+
+    // Route::get('/logout',[
+    //     'as'=>'user.logout',
+    //     'uses'=>'App\Http\Controllers\loginController@logout'
+    // ] );
+});
+
 
 Route::prefix('account_user')->group(function () {
     Route::get('/account',[
@@ -195,7 +221,7 @@ Route::prefix('myshop')->group(function () {
         'uses'=>'App\Http\Controllers\cartController@addcart'
     ] );
 
-    Route::get('/cart/{rowId}',[
+    Route::get('/cart/{session_id}',[
         'as'=>'delete.cart',
         'uses'=>'App\Http\Controllers\cartController@delete_cart'
     ] );
@@ -207,22 +233,38 @@ Route::prefix('myshop')->group(function () {
 
 });
 
+// cart
+Route::post('add_to_card', [\App\Http\Controllers\cartController::class, 'add']);
+Route::get('show_card', [\App\Http\Controllers\cartController::class, 'display']);
+Route::get('delete_card/{session_id}', [\App\Http\Controllers\cartController::class, 'delete_cart_product']);
+Route::post('update_cart', [\App\Http\Controllers\cartController::class, 'update_cart']);
+
+// wishlist
+Route::get('show_wishlist', [\App\Http\Controllers\wishlistController::class, 'display']);
+Route::post('add_to_wishlist', [\App\Http\Controllers\wishlistController::class, 'add']);
+Route::get('delete_wishlist/{wishlist_id}', [\App\Http\Controllers\wishlistController::class, 'delete_wishlist_product']);
+
+
+
+
+
 // check out
 
-Route::prefix('checkout')->group(function () {
-    Route::get('/check',[
-        'as'=>'user.checkout',
-        'uses'=>'App\Http\Controllers\checkoutController@display'
-    ] );
-        Route::post('/submit',[
-            'as'=>'checkout.submit',
-            'uses'=>'App\Http\Controllers\checkoutController@save'
-        ] );
+// Route::prefix('checkout')->group(function () {
+//     Route::get('/check',[
+//         'as'=>'user.checkout',
+//         'uses'=>'App\Http\Controllers\checkoutController@display'
+//     ] );
+//         Route::post('/submit',[
+//             'as'=>'checkout.submit',
+//             'uses'=>'App\Http\Controllers\checkoutController@save'
+//         ] );
 
-    
-    
+// });
 
-});
+// check out
+Route::get('show_checkout', [\App\Http\Controllers\checkoutController::class, 'display']);
+Route::post('process_checkout', [\App\Http\Controllers\checkoutController::class, 'save']);
 
 
 

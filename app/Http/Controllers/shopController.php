@@ -14,6 +14,7 @@ session_start();
 
 class shopController extends Controller
 {
+
     public function display(){
         $product = productModel::paginate(3);
         $catagories = categoryModel::all();
@@ -28,11 +29,6 @@ public function detail($id){
         return view('user.shop.shopdetail',[ 'products'=>$product,'categories'=>$catagories,'similar_product'=> $similar_product]);
 }
 
-// public function similar(){
-//     $name_category= $this->showtype();
-//     $product_similar = DB::table('product')->where()
-//     $users = DB::table('users')->where('votes', 100)->get();
-// }
 
 public function home(){
         $catagories = categoryModel::all();

@@ -41,15 +41,15 @@
                     <div class="signin-form">
                         <h2 class="form-title">Sign up</h2>
                        
-                        <form method="POST" class="register-form" action="{{ route('user.sign') }}" enctype="multipart/form-data" id="login-form">
+                        <form method="POST" class="register-form" action="{{URL::to('/user-login')}}" enctype="multipart/form-data" id="login-form">
                             @csrf
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="account_user" id="account_user" placeholder="Your Name"/>
+                                <input type="text" name="account_user" id="account_user" placeholder="Your Name" value="{{ old('account_user') }}" required/>
                             </div>
                             <div class="form-group">
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="pass_user" id="pass_user" placeholder="Password"/>
+                                <input type="password" name="pass_user" id="pass_user" placeholder="Password" value="{{ old('pass_user') }}" required/>
                             </div>
                             <div class="form-group">
                                 <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />

@@ -76,7 +76,7 @@
                   </td>
 
                   <td >
-                    {{-- <a href="{{ route('order.detail',['id_detail'=> $orders->id_user]) }}" type="button" style="background-color:#11741e; " class="btn btn-success">Chi tiết</a> --}}
+                    <a href="{{ route('order.detail',['id_order'=> $orders->id_order]) }}" type="button" style="background-color:#11741e; " class="btn btn-success">Chi tiết</a>
                     <a href="{{ route('order.duyet',['id'=> $orders->id_order]) }}" type="button" style="background-color:#f6c23e; " class="btn btn-success">
                         <?php
                         if($orders['status'] ==0){
@@ -95,9 +95,9 @@
              
             </tbody>
           </table>
-          {{-- <div class="col-md-12">
-            {{ $categories->links('pagination::bootstrap-4') }}
-          </div> --}}
+          <div class="col-md-12">
+            {{ $order->links('pagination::bootstrap-4') }}
+          </div>
           <!-- /.col-md-6 -->
         </div>
         <!-- /.row -->

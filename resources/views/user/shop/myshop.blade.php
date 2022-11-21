@@ -57,13 +57,13 @@
             <div class="col-lg-3 col-md-5">
                 <div class="sidebar">
                     <div class="sidebar__item">
-                        {{-- <h4>Department</h4>
+                        <h4>Department</h4>
                         <ul>
                             @foreach ($categories as $category)
                             <li><a href="#">{{ $category['name_category'] }}</a></li>
                             @endforeach
                  
-                        </ul> --}}
+                        </ul>
                     </div>
                     <div class="sidebar__item">
                         <h4>Price</h4>
@@ -491,13 +491,27 @@
                           @foreach ($products as $product)
                          <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="product__item">
+                            <form >
+                                @csrf
                             {{-- 'img/'.$product['image1'].'' --}}
+                            <input type="hidden" name="" value="{{ $product->id_product }}" class="cart_product_id_{{ $product->id_product }}">
+                            <input type="hidden" name="" value="{{ $product->name_product }}" class="cart_product_name_{{ $product->id_product }}">
+                            <input type="hidden" name="" value="{{ $product->image1 }}" class="cart_product_img_{{  $product->id_product}}">
+                            <input type="hidden" name="" value="{{ $product->price_sale }}" class="cart_product_price_sale_{{ $product->id_product }}">
+                            <input type="hidden" name="" value="{{ $product->count_product }}" class="cart_product_count_{{ $product->id_product }}">
+                            <input type="hidden" name="" value="1" class="cart_product_qty_{{ $product->id_product }}">
+
+                            
                             <div class="product__item__pic set-bg" data-setbg="{{ asset('img/'.$product['image1'].'') }}">
                                 <div class="product__discount__percent">{{ $product['sale_product'] }}%</div>
                                 <ul class="product__item__pic__hover">
-                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                    {{-- <li><a href="#"><i class="fa fa-heart"></i></a></li> --}}
+                                    <li><a type="button" data-id_product="{{  $product->id_product}}" class="add_to_wishlist"><i class="fa fa-heart"></i></a></li>
+
                                     <li><a href="{{ route('product.detail',['id'=> $product->id_product]) }}"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="{{ route('add.cart',['id'=> $product->id_product]) }}"><i class="fa fa-shopping-cart"></i></a></li>
+                                    {{-- <li><a href="{{ route('add.cart',['id'=> $product->id_product]) }}"><i class="fa fa-shopping-cart"></i></a></li> --}}
+                                    <li><a type="button" data-id_product="{{  $product->id_product}}" class="add_to_cart"><i class="fa fa-shopping-cart"></i></a></li>
+                                    
                                 </ul>
                             </div>
                             <div class="product__item__text">
@@ -518,6 +532,7 @@
                                 
                                 <span style=" " class="price_old">${{ $product['price_product'] }}</span>
                             </div>
+                        </form>
                         </div>
                     </div>
                     @endforeach

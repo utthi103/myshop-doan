@@ -55,6 +55,17 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
+                <?php
+                        $checkout = Session::get('checkout');
+                        if($checkout){
+                    echo ' 
+                <div class="alert alert-success">
+                <span class="text-alert">'.$checkout.'</span>
+                </div>
+                ';
+                    Session::put('checkout',null);
+                }
+                ?>
                 <h6><span class="icon_tag_alt"></span> Have a coupon? <a href="#">Click here</a> to enter your code
                 </h6>
             </div>
@@ -62,7 +73,7 @@
         <div class="checkout__form" style="    padding-left: 2%;
         padding-right: 2%;">
             <h4>Billing Details</h4>
-            <form action="{{ route('checkout.submit') }}" method="POST">
+            <form action="{{URL::to('/process_checkout') }}" method="POST">
                 @csrf
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
@@ -102,31 +113,42 @@
                         </div>
                         <div class="checkout__input">
                             <p>Order notes<span>*</span></p>
-                                <textarea name="note" id="" cols="30" rows="10" style="width: 100%;text-align: left;"  placeholder="Notes about your order, e.g. special notes for delivery.">
-
-                                </textarea>
+                                {{-- <textarea  name="note" id="" cols="30" rows="10" style="width: 100%;text-align: left;"  placeholder="Notes about your order, e.g. special notes for delivery."> --}}
+                                {{-- </textarea> --}}
+                                <input type="textarea" name="note" id="note"  value="{{ old('note') }}" cols="30" rows="10" style="width: 100%;text-align: left; height: 180px;"  placeholder="Notes about your order, e.g. special notes for delivery." >
+        
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
                         <div class="checkout__order">
                             <?php
-                    $cart = Cart::content();
+                            $total_cart = 0;
+                            $total = 0;
+                        $price= 0;
+                        $carts = Session::get('cart');
+                        if((Session::get('cart'))!=null ){
+                            $carts  = Session::get('cart');
+                            foreach ($carts as $key => $cart) {
+                            $total += $cart['qty']*$cart['price_product'];
+                        }
+
+                        }
 
                             ?>
                             <h4>Your Order</h4>
                             <div class="checkout__order__products">Products <span>Total</span></div>
                             <ul>
-                                @foreach ( $cart  as $item)
-                                     <li>{{ $item->name }} <span>$<?php
-                                        $total = $item->qty*$item->price;
-                                        echo  $total;
+                                @foreach ( $carts   as $cart)
+                                     <li>{{$cart['name_product'] }} <span>$<?php
+                                        $price =$cart['qty']*$cart['price_product'];
+                                        echo  $price;
                                    ?></span></li>
                                 
                                 @endforeach
                                
                             </ul>
-                            <div class="checkout__order__subtotal">Subtotal <span>${{ Cart::subtotal() }}</span></div>
-                            <div class="checkout__order__total">Total <span>${{ Cart::subtotal() }}</span></div>
+                            <div class="checkout__order__subtotal">Subtotal <span>$<?php echo $total;  ?></span></div>
+                            <div class="checkout__order__total">Total <span>$<?php echo $total;  ?></span></div>
                             
                             <div class="checkout__input__checkbox">
                              

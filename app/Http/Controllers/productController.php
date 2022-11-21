@@ -8,6 +8,7 @@ use DB;
 use App\Models\productModel;
 use App\Models\categoryModel;
 use Illuminate\Support\File;
+use Illuminate\Support\Facades\Redirect;
 use Session;
 session_start();
 
@@ -16,27 +17,35 @@ class productController extends Controller
     // use withFileUploads;
     // public $storedPath1;
     public function display(){
+        $this->checklogin();
         $products = productModel::paginate(5);
         return view('product.tableproduct',['products'=>$products]);
-        // return view('product.tableproduct');
+        // return view('product.tableproduct'); 
     }
-    // public function displaydata(){
-    //     $products = productModel::paginate(5);
-    //     return view('product.addproduct',['products'=>$products]);
-    // }
+    public function checklogin(){
+        $id_user = Session::get('id_admin');
+        if($id_user){
+            return Redirect::to('/admin');
+        }else{
+            return Redirect::to('/admin')->send();
+        }
+    }
 
     public function create(){
+        $this->checklogin();
         $categories = $this->showtype();
 
         return view('product.addproduct',['categories'=>$categories]);
     }
     public function showtype(){
+        $this->checklogin();
         $categoty = categoryModel::all();
         return $categoty;
 
     }
 
     public function submit(Request $request){
+        $this->checklogin();
         $data = new productModel;
 
         $data->name_product = $request->input('name_product');
@@ -86,14 +95,18 @@ class productController extends Controller
 
 
     public function showdata($id){
+        $this->checklogin();
         $categories = $this->showtype();
         $data = productModel::find($id);
         return view('product.edit',['data'=>$data, 'categories'=>$categories]);
     }
 
     public function edit($id, Request $request){
+        $this->checklogin();
         $data = productModel::find($id);
+        $data->id_category = $request->input('id_category');
         $data->name_product = $request->input('name_product');
+
         $data->name_category = $request->input('name_category');
 
         $data->price_product = $request->input('price_product');
@@ -146,12 +159,10 @@ class productController extends Controller
         $data->save();
         Session:: put('msg', 'Sửa thành công');
         return redirect()->route('product.tableproduct');
-        // return $request->session()->get('msg');
-        // return $request->input('image_old');
-        // return $path1;
     }
 
     public function delete($id){
+        $this->checklogin();
         $data = productModel::find($id);
         $data->delete();
         // unlink('img/'.$data['image1'].'');
