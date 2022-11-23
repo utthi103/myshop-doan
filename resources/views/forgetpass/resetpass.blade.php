@@ -35,17 +35,17 @@
             }else if(isset($pass_sucss)){
                 echo ' 
             <div class="alert alert-success"">
-            <span class="text-alert" style=" font-family: none; color: red; font-size: 15px;">'.$pass_wrong.'</span>
+            <span class="text-alert" style=" font-family: none; color: red; font-size: 15px;">'.$pass_sucss.'</span>
             </div>
             ';
-                Session::put('pass_wrong',null);
+                Session::put('pass_sucss',null);
             }
             ?>
             <button  type="submit" class="btn btn-primary w-100">Đổi mật khẩu</button>
            
             </form>
             <div class="d-flex justify-content-between mt-4">
-                <a class="{{ URL::to('/form_signin') }}" href="#">Đăng nhập</a>
+                <a class="" href="{{ URL::to('/form_signin') }}">Đăng nhập</a>
                 {{-- <a class="" href="#">Register</a> --}}
             </div>
         </div>

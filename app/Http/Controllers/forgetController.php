@@ -61,12 +61,13 @@ class forgetController extends Controller
         $confirm_pass = md5($request->input('confirm_pass'));
         if($pass==$confirm_pass){
             $email_user = Session::get('email_user');
-            $user = userModel::find($email_user);
-            $user->pass_user = $pass;
+            // $user = userModel::find($email_user);
+            $user = UserModel::where('email_user', $email_user)->update(array('pass_user'=> $pass));
+            // $user->pass_user = $pass;
             // $user->save();
             // return  $user->pass_user ;
-            // Session::put('pass_sucss', 'Mật khẩu không trùng khớp');
-            // return view('forgetpass.resetpass');
+            Session::put('pass_sucss', 'Đổi mật khẩu thành công, vui lòng đăng nhập lại');
+            return view('forgetpass.resetpass');
         }else{
             Session::put('pass_wrong', 'Mật khẩu không trùng khớp');
             return view('forgetpass.resetpass');
