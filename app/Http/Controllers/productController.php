@@ -104,7 +104,7 @@ class productController extends Controller
     public function edit($id, Request $request){
         $this->checklogin();
         $data = productModel::find($id);
-        $data->id_category = $request->input('id_category');
+        // $data->id_category = $request->input('id_category');
         $data->name_product = $request->input('name_product');
 
         $data->name_category = $request->input('name_category');
