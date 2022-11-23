@@ -35,6 +35,7 @@
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="{{ asset('login/images/signin-image.jpg') }}" alt="sing up image"></figure>
+                       
                         <a href="#" class="signup-image-link">Create an account</a>
                     </div>
 
@@ -54,6 +55,7 @@
                             <div class="form-group">
                                 <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
                                 <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
+                                <a href=" {{URL::to('/show_email')}} " style="color: red;">Forget password</a>
                             </div>
                             <?php
                             $message = Session::get('message');

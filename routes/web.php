@@ -266,5 +266,16 @@ Route::get('delete_wishlist/{wishlist_id}', [\App\Http\Controllers\wishlistContr
 Route::get('show_checkout', [\App\Http\Controllers\checkoutController::class, 'display']);
 Route::post('process_checkout', [\App\Http\Controllers\checkoutController::class, 'save']);
 
+// forget password
+// show form doi mat khau
+Route::get('show_email', [\App\Http\Controllers\forgetController::class, 'display']);
+// button tiep theo
+Route::post('send_email', [\App\Http\Controllers\forgetController::class, 'sendmail']);
+// show form doi mat khau
+Route::post('show_code', [\App\Http\Controllers\forgetController::class, 'showcode']);
+//reset pass
+Route::post('reset_pass', [\App\Http\Controllers\forgetController::class, 'reset_pass']);
+
+
 
 

@@ -60,7 +60,7 @@
                         <h4>Department</h4>
                         <ul>
                             @foreach ($categories as $category)
-                            <li><a href="#">{{ $category['name_category'] }}</a></li>
+                            <li><a href="{{ route('product.listcategory',['id'=> $category->name_category]) }}">{{ $category['name_category'] }}</a></li>
                             @endforeach
                  
                         </ul>
