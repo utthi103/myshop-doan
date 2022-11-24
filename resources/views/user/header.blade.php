@@ -90,8 +90,9 @@
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <?php
-                                               
-                     $total_cart = 0;
+                        $id_user = Session::get('id_user');
+                        if (isset($id_user)) {
+                              $total_cart = 0;
                         $wishlist_total = 0;
                         $price= 0;
                         if((Session::get('wishlist'))!=null ){
@@ -108,12 +109,36 @@
                         }
 
                         }
+                        }
+                                               
+                  
                             ?>
                         <ul>
-                            <li><a href=" {{URL::to('/show_wishlist')}} "><i class="fa fa-heart"></i> <span><?php echo $wishlist_total; ?></span></a></li>
-                            <li><a href="{{ route('product.cart') }}"><i class="fa fa-shopping-bag"></i> <span><?php echo  $total_cart; ?></span></a></li>
+                            <li><a href=" {{URL::to('/show_wishlist')}} "><i class="fa fa-heart"></i> <span><?php
+                            if (isset($id_user)){
+                                echo $wishlist_total;
+                            }else{
+                                echo "0";
+                            }
+                                 
+                                  ?></span></a></li>
+                            <li><a href="{{ route('product.cart') }}"><i class="fa fa-shopping-bag"></i> <span><?php 
+                            if (isset($id_user)){
+                                echo  $total_cart; 
+                            }else{
+                                echo "0";
+                            }
+                           
+                            ?></span></a></li>
                         </ul>
-                        <div class="header__cart__price">item: <span><?php echo $price; ?></span></div>
+                        <div class="header__cart__price">item: <span><?php
+                         if (isset($id_user)){
+                            echo $price;
+                            }else{
+                                echo "0";
+                            }
+                        
+                         ?></span></div>
                     </div>
                 </div>
             </div>

@@ -77,8 +77,8 @@
                                     <h5>{{ $cart['name_product'] }}</h5>
                                  </td>
                                 <td class="shoping__cart__price">
-                                   {{-- ${{ $cart['price_product'] }} --}}
-                                   ${{ number_format($cart['price_product'],0,',','.')}}
+                                   ${{ $cart['price_product'] }}
+                                   {{-- ${{ number_format($cart['price_product'],0,',','.')}} --}}
                                 </td>
                                 <td class="shoping__cart__quantity" style="vertical-align: middle;">
                                     <div class="quantity">
@@ -94,7 +94,7 @@
                                    <?php
                                         // $subtotal = $cart['qty']*$cart['price_product'];
                                         // echo '$'.number_format($subtotal,0,',','.');
-                                        echo $subtotal;
+                                        echo '$'.$subtotal;
                                    ?>
                                 </td>
                                 <td class="shoping__cart__item__close" style="line-height: 120px; text-align: center">

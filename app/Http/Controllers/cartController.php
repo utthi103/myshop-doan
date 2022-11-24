@@ -26,32 +26,33 @@ class cartController extends Controller
         return view('user.shop.cart', ['categories'=>$catagories]);
     }
 
-    public function addcart($id){
-        $this->checklogin();
-        $catagories = categoryModel::all();
-        $product= productModel::find($id);
-        $data = Cart::content();
-        $check = false;
-        $cart = Session::get('cart');
-        $cart['id'] = $product->id_product;
-        $cart['qty'] = 1;
-        $cart['name'] = $product->name_product;
-        $cart['price'] = $product->price_sale;
-        $cart['weight'] = $product->price_sale;
-        $cart['options']['img'] = $product->image1;
+    // public function addcart($id){
+    //     $this->checklogin();
+    //     $catagories = categoryModel::all();
+    //     $product= productModel::find($id);
+    //     $data = Cart::content();
+    //     $check = false;
+    //     $cart = Session::get('cart');
+    //     $cart['id'] = $product->id_product;
+    //     $cart['qty'] = 1;
+    //     $cart['name'] = $product->name_product;
+    //     $cart['price'] = $product->price_sale;
+    //     $cart['weight'] = $product->price_sale;
+    //     $cart['options']['img'] = $product->image1;
         
-        // $cart['options']['id_user'] = Session::get('id_user');
+    //     // $cart['options']['id_user'] = Session::get('id_user');
        
-        Cart::add($cart);
-         return redirect()->route('product.cart');
-        // return $i ;
+    //     Cart::add($cart);
+    //      return redirect()->route('product.cart');
+    //     // return $i ;
     
         
-    }
+    // }
 
 
 
     public function delete_cart($rowId){
+        
         $this->checklogin();
         Cart::update($rowId, 0);
         $catagories = categoryModel::all();
@@ -67,6 +68,7 @@ class cartController extends Controller
 
 
     public function add(Request $request){
+        $this->checklogin();
         $data = $request->all();
         $session_id = substr(md5(microtime()), rand(0,26), 5);
         $cart = Session::get('cart');

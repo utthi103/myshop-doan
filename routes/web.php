@@ -198,12 +198,12 @@ Route::prefix('myshop')->group(function () {
         'uses'=>'App\Http\Controllers\shopController@detail'
     ] );
 
-    Route::get('/search',[
+    Route::post('/search',[
         'as'=>'search.price',
         'uses'=>'App\Http\Controllers\shopController@search_price'
     ] );
 
-    Route::get('/searchname',[
+    Route::post('/searchname',[
         'as'=>'search.nameca',
         'uses'=>'App\Http\Controllers\shopController@search_name'
     ] );

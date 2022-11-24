@@ -76,7 +76,7 @@
                     
                     </div>
                         <div class= "" style="margin: 5px;">
-                        <img src="{{ asset('img/caykimngan.jpg') }}" alt="" width="100px" >
+                        {{-- <img src="{{ asset('img/caykimngan.jpg') }}" alt="" width="100px" > --}}
                     </div>
                   </div>
                   <div class="form-group">
@@ -86,7 +86,7 @@
                     
                     </div>
                     <div class= "" style="margin: 5px;" >
-                        <img src="{{ asset('img/caykimngan.jpg') }}" alt="" width="100px">
+                        {{-- <img src="{{ asset('img/caykimngan.jpg') }}" alt="" width="100px"> --}}
                     </div>
                   </div>
                   <label for="">Mô tả</label>

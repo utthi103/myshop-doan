@@ -19,6 +19,7 @@ class userloginController extends Controller
             if($user){
                 Session::put('account_user', $user->account_user);
                 Session::put('id_user',$user->id_user);
+                Session::put('email_user',$user->email_user);
                 return Redirect::to('/');
             }else{
                 Session::put('message','Mật khẩu hoặc tên đăng nhập không đúng. Vui lòng kiểm tra lại thông tin');
@@ -41,6 +42,7 @@ class userloginController extends Controller
              $this->checklogin();
             Session::put('account_user',null);
     		Session::put('id_user',null);
+            Session::put('email_user',null);
             return Redirect::to('/');
         }
 }

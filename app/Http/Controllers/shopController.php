@@ -16,7 +16,7 @@ class shopController extends Controller
 {
 
     public function display(){
-        $product = productModel::paginate(3);
+        $product = productModel::paginate(6);
         $catagories = categoryModel::all();
         return view('user.shop.myshop',['products'=>$product, 'categories'=>$catagories]);
 }
@@ -45,7 +45,7 @@ public function home(){
 
 
 public function listcategory($id){
-    $product=productModel::where('name_category', $id)->paginate(1);
+    $product=productModel::where('name_category', $id)->paginate(6);
     $catagories = categoryModel::all();
     // return $product;
     return view('user.shop.myshop', ['productt'=>$product, 'categories'=>$catagories]);
@@ -59,7 +59,7 @@ public function search_price(Request $request){
     $min =  $min[1];
     $max = $max[1];
         $catagories = categoryModel::all();
-    $price_sale = productModel::whereBetween('price_sale', [$min,$max])->paginate(2);
+    $price_sale = productModel::whereBetween('price_sale', [$min,$max])->paginate(6);
     // return $min[1];
     return view('user.shop.myshop', ['price_sale'=>$price_sale,'categories'=>$catagories]);
     // return $min;
@@ -67,7 +67,8 @@ public function search_price(Request $request){
     public function search_name(Request $request){
         $name_product = $request->input('name_product');
          $catagories = categoryModel::all();
-        $results = productModel::where('name_product', 'LIKE', '%'.$name_product.'%')->get();
+        $results = productModel::where('name_product', 'LIKE', '%'.$name_product.'%')->paginate(6);
+        // return $min[1];
         // $productg = productModel::whereLike('name_product', $name_product)->get();
  
     //  return view('user.shop.myshop', ['results '=>$results,'categories'=>$catagories]);

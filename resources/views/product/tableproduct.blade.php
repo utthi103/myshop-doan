@@ -69,7 +69,7 @@
               <td>{{ $product['name_product'] }}</td>
               <td>{{ $product['name_category'] }}</td>
               <td>{{ $product['count_product'] }}</td>
-              <td>{{ $product['price_product'] }} VND</td> 
+              <td>{{ $product['price_product'] }} $</td> 
                     <td style="text-align: center;">
                      
                       <img src="{{ asset('img/'.$product['image1'].'') }}" alt="" width="100px">

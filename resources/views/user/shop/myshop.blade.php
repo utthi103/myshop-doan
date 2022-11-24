@@ -76,7 +76,7 @@
                             </div>
                             <div class="range-slider">
                                 <div class="price-input">
-                                    <form action="{{ route('search.price') }}" style="display: flex">
+                                    <form action="{{ route('search.price') }}" style="display: flex" method="POST">
                                         @csrf
                                         <input type="text" id="minamount" name="min_price">
                                     <input type="text" id="maxamount" name="max_price">
@@ -88,7 +88,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="sidebar__item sidebar__item__color--option">
+                    {{-- <div class="sidebar__item sidebar__item__color--option">
                         <h4>Colors</h4>
                         <div class="sidebar__item__color sidebar__item__color--white">
                             <label for="white">
@@ -153,7 +153,7 @@
                                 <input type="radio" id="tiny">
                             </label>
                         </div>
-                    </div>
+                    </div> --}}
                     {{-- <div class="sidebar__item">
                         <div class="latest-product__text">
                             <h4>Latest Products</h4>
@@ -482,10 +482,10 @@
                        </div>
                    </div>
                    @endforeach
-                   {{-- <div class="col-md-12">
+                   <div class="col-md-12">
                     {{ $results->links('pagination::bootstrap-4') }}
                   
-                  </div> --}}
+                  </div>
 
                     @elseif(isset($products))
                           @foreach ($products as $product)

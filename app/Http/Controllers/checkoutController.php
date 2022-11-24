@@ -12,6 +12,7 @@ use App\Models\order_detailModel;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Redirect;
 use Session;
+use Mail;
 session_start();
 class checkoutController extends Controller
 {
@@ -73,7 +74,14 @@ class checkoutController extends Controller
         $product->save();
        }
        Session::put('checkout', 'Cảm ơn bạn đã đặt hàng, đơn hàng của bạn đang chờ xét duyệt');
-    //    return redirect()->route('order.detail')->with('order_details',$order_detail);
+       $to_name = 'SHOP';
+            
+       $to_email =Session::get('email_user');
+       $data = array("code"=> 'Đơn hàng của bạn đã được đặt thành công, vui lòng chờ xét duyệt');
+       Mail::send('forgetpass.duyet',$data,function($message) use ($to_email, $to_name  ){
+        $message->to($to_email)->subject('Xác nhận đơn hàng');//send this mail with
+        $message->from($to_email, $to_name);//send from this mail
+        });
     return Redirect::to('/show_checkout')->withInput();
     // return view('user.shop.checkout');
 

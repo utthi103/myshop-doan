@@ -21,7 +21,7 @@
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form">
-                            <form action="{{ route('search.nameca') }}"  enctype="multipart/form-data">
+                            <form action="{{ route('search.nameca') }}"  enctype="multipart/form-data" method="POST">
                                 @csrf
                                 <div class="hero__search__categories">
                                     All Categories

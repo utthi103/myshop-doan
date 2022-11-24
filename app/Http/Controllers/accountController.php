@@ -15,8 +15,8 @@ session_start();
 class accountController extends Controller
 {
     public function display(){
-        $id_user = Session::get('id_user');
-        $user = userModel::where('id_user','<>',$id_user )->get();
+        $id_admin = Session::get('id_admin');
+        $user = userModel::where('id_user','<>',$id_admin )->get();
         // $user = userModel::all();
         return view('account.account', ['user'=>$user]);
     }

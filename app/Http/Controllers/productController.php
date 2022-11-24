@@ -165,9 +165,9 @@ class productController extends Controller
         $this->checklogin();
         $data = productModel::find($id);
         $data->delete();
-        // unlink('img/'.$data['image1'].'');
-        // unlink('img/'.$data['image2'].'');
-        // unlink('img/'.$data['image3'].'');
+        unlink('img/'.$data['image1'].'');
+        unlink('img/'.$data['image2'].'');
+        unlink('img/'.$data['image3'].'');
         Session:: put('msg', 'Xóa thành công');
         
         return redirect()->route('product.tableproduct');
