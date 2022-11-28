@@ -3,7 +3,13 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
-
+use DB;
+use Illuminate\Support\File;
+use App\Models\productModel;
+use App\Models\categoryModel;
+use App\Models\userModel;
+use Session;
+session_start();
 class myaccountController extends Controller
 {
     public function checklogin(){
@@ -14,8 +20,62 @@ class myaccountController extends Controller
             return Redirect::to('/form_signin')->send();
         }
     }
-    public function display(){
+    // public function display(){
+    //     $this->checklogin();
+    //     return view('account.myaccount');
+    // }
+
+    public function myaccount(){
+        $categories = categoryModel::all();
+        $id = Session::get('id_user');
+        $user = userModel::find($id);
+        return view('account.myaccount', ['categories'=>$categories, 'user'=>$user]);
+    }
+
+    public function save(Request $request){
         $this->checklogin();
-        return view('account.myaccount');
+        $categories = categoryModel::all();
+        $id = Session::get('id_user');
+        $user = userModel::find($id);
+        $user->first_name = $request->input('first_name');
+        $user->last_name = $request->input('last_name');
+        $user->gender_user = $request->input('gender_user');
+        $user->phone = $request->input('phone');
+        $user->address_user = $request->input('address_user');
+
+        $avt = $request->file('avt');
+        if($avt!=null){
+             $user->avt = $request->file('avt')->getClientOriginalName();
+        $path2 = $request->file('avt')->store('img');
+        $image2 = $request->file('avt');
+        $storedPath2 = $image2->move('img', $image2->getClientOriginalName());
+        $name = $request->input('path_avt');
+        unlink('img/'.$name.'');
+        }
+       
+        $pass_old = $request->input('pass_old');
+        $pass_new = $request->input('pass_new');
+        $pass = $request->input('password');
+
+        if( $pass_old !=null && $pass_new !=null &&  $pass !=null ){
+            $pass_db = $user['pass_user'];
+            if($pass_db == (md5($pass_old))){
+                if($pass_new == $pass ){
+                    $user->pass_user = md5( $pass_new);
+                    Session::put('pass_mess','Đổi mật khẩu thành công');
+                }else{
+                    Session::put('pass_mess','Mật khẩu không trùng khớp');
+                }
+            }else{
+                Session::put('pass_mess','Mật khẩu không đúng');
+            }
+        }
+        $user->update();
+        // Session::put('info','Thay đổi thông tin thành công');
+       
+        // return view('account.myaccount', ['categories'=>$categories, 'user'=>$user]);
+        // return redirect()->back();
+        return Redirect::to('/myaccount')->withInput();
+
     }
 }

@@ -276,6 +276,10 @@ Route::post('show_code', [\App\Http\Controllers\forgetController::class, 'showco
 //reset pass
 Route::post('reset_pass', [\App\Http\Controllers\forgetController::class, 'reset_pass']);
 
+// account user
+Route::get('myaccount', [\App\Http\Controllers\myaccountController::class, 'myaccount']);
+Route::post('save', [\App\Http\Controllers\myaccountController::class, 'save']);
+
 
 
 

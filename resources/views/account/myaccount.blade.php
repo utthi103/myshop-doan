@@ -1,89 +1,144 @@
-@extends('layouts.admin')
+@extends('layouts.user')
  
 @section('title')
     <title>Trang chủ</title>
 
 @stop
+{{-- @section('logo')
+    <img src="{{ asset('img/cayphattai.jpg') }}" alt="">
+@stop --}}
 
-@section('content') 
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12 col-sm-12">
-            <div class="padding60">
-                <div class="log-title">
-                    <h3><strong>Tài khoản của tôi</strong></h3>
-                </div>
-                <div class="prament-area main-input" id="doitk">
-                    <ul class="panel-group" id="accordion">
-                        <li class="panel">
-                            <div class="account-title" data-toggle="collapse" data-parent="#accordion" data-target="#collapse1">
-                                <label>
-                                    <input type="radio" checked value="forever" name="rememberme" />
-                                    Thông tin cá nhân
-                                </label>
-                            </div>
-                            <div id="collapse1" class="panel-collapse collapse in">
-                                <div class="single-log-info">
-                                    <div class="bulling-title">
-                                        <b>
-                                            <?php if (isset($_COOKIE['doimk'])) {
-                                                echo $_COOKIE['doimk'];
-                                            } ?>
-                                        </b>
-                                        <div class="custom-input">
-                                            <form action="?act=taikhoan&xuli=update" method="post">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <input type="text" name="Ho" placeholder="Họ.." />
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <input type="text" name="Ten" placeholder="Tên.." />
-                                                    </div>
-                                                </div>
-                                                <div class="custom-select">
-                                                    <select class="form-control" name="GioiTinh" title="Giới tính">
-                                                        <option  value="Nam"> Nam</option>
-                                                        <option  value="Nữ"> Nữ</option>
-                                                        <option  value="Khác"> Khác</option>
-                                                    </select>
-                                                </div>
-                                                <input type="email" name="Email" placeholder="Địa chỉ Email.."" />
-                                                <input type="text" name="SĐT" placeholder="Số điện thoại.." required pattern="[0-9]+" minlength="10"  />
-                                                <input type="text" name="DiaChi" placeholder="Địa chỉ.."   />
-                                                <div class="submit-text">
-                                                    <button type="submit_tt">Lưu</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                        </li>
-                        <li class="panel">
-                            <div class="account-title" data-toggle="collapse" data-parent="#accordion" data-target="#collapse4">
-                                <label>
-                                    <input type="radio" value="forever" name="rememberme" />
-                                    Đổi mật khẩu
-                                </label>
-                            </div>
-                            <div id="collapse4" class="panel-collapse collapse">
-                                <div class="single-log-info">
-                                    <div class="custom-input">
-                                        <form action="?act=taikhoan&xuli=update" method="post">
-                                            <input type="password" placeholder="Mật khẩu hiện tại .. " name="MatKhau" minlength="6" required />
-                                            <input type="password" placeholder="Mật khẩu mới .. " name="MatKhauMoi" />
-                                            <input type="password" placeholder="Xác nhận lại mật khẩu .." name="MatKhauXN" />
-                                            <div class="submit-text text-left">
-                                                <button type="submit_pw" value="submit form">Lưu</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+@section('content')
+<div class="container light-style flex-grow-1 container-p-y" style="    margin-bottom: 5%;">
+
+    {{-- <h4 class="font-weight-bold py-3 mb-4">
+      Account settings
+    </h4> --}}
+<form action="{{ URL::to('/save') }}" method="POST" enctype="multipart/form-data">
+    @csrf
+    <div class="card overflow-hidden">
+      <div class="row no-gutters row-bordered row-border-light">
+        <div class="col-md-3 pt-0">
+          <div class="list-group list-group-flush account-settings-links">
+            <a class="list-group-item list-group-item-action active" style="margin-top: 7%;" data-toggle="list" href="#account-general">General</a>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-change-password">Change password</a>
+            {{-- <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-info">Info</a>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-social-links">Social links</a>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-connections">Connections</a>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-notifications">Notifications</a> --}}
+          </div>
         </div>
+        <div class="col-md-9">
+          <div class="tab-content">
+            <div class="tab-pane fade active show" id="account-general">
+
+              <div class="card-body media align-items-center">
+                <img src="{{ asset('img/'.$user['avt'].'') }}" alt="" class="d-block ui-w-80" style="    width: 200px !important;
+                ">
+                <input type="hidden" name="path_avt" value="{{ $user['avt'] }}">
+                <div class="media-body ml-4">
+                  <label class="btn btn-outline-primary">
+                    {{-- Upload new photo --}}
+                    <input type="file" class="account-settings-fileinput" name="avt">
+                  </label> &nbsp;
+                  {{-- <button type="button" class="btn btn-default md-btn-flat" style="border-color: rgba(24,28,33,0.1);">Reset</button> --}}
+
+                  <div class="text-light small mt-1" style="    color: black!important;">Allowed JPG, GIF or PNG. Max size of 800K</div>
+                </div>
+              </div>
+              <hr class="border-light m-0">
+
+           
+              <div class="card-body">
+                <?php
+                $info = Session::get('info');
+                if($info){
+                    echo ' 
+                <div class="alert alert-success">
+                <span class="text-alert" style=" font-family: none; color: red; font-size: 15px;">'.$info.'</span>
+                </div>
+                ';
+                    Session::put('info',null);
+                }
+                ?>
+                <div class="form-group">
+                    <label class="form-label">Tên đăng nhập</label>
+                    <input type="text" class="form-control mb-1" value="{{ $user['account_user'] }}" disabled name="account_user">
+                  </div>
+                <div class="form-group">
+                  <label class="form-label">Họ</label>
+                  <input type="text" class="form-control mb-1" value="{{ $user['first_name'] }}" name="first_name">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Tên</label>
+                  <input type="text" class="form-control" value="{{ $user['last_name'] }}" name="last_name">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="text" class="form-control" value="{{ $user['email_user'] }}" disabled name="email_user">
+                  </div>
+                <div class="form-group">
+                  <label class="form-label">Giới tính</label>
+                  <input type="text" class="form-control mb-1" value="{{ $user['gender_user'] }}" name="gender_user">
+                
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Số điện thoại</label>
+                  <input type="text" class="form-control" value="{{ $user['phone'] }}" name="phone">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Địa chỉ</label>
+                    <input type="text" class="form-control" value="{{ $user['address_user'] }}" name="address_user">
+                  </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="account-change-password">
+              <div class="card-body pb-2">
+
+                <div class="form-group">
+                  <label class="form-label">Mật khẩu cũ</label>
+                  <input type="password" class="form-control" name="pass_old" value="{{ old('pass_old') }}">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Mật khẩu mới</label>
+                  <input type="password" class="form-control" name="pass_new"  value="{{ old('pass_new') }}">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Xác nhận lại mật khẩu</label>
+                  <input type="password" class="form-control" name="password"  value="{{ old('password') }}">
+                </div>
+                <?php
+                $pass_mess = Session::get('pass_mess');
+                if($pass_mess){
+                    echo ' 
+                <div class="alert alert-success">
+                <span class="text-alert" style=" font-family: none; color: red; font-size: 15px;">'.$pass_mess.'</span>
+                </div>
+                ';
+                    Session::put('pass_mess',null);
+                }
+                ?>
+              </div>
+      
+            </div>
+    
+          </div>
+        </div>
+      </div>
+      <div class="text-right mt-3" style="    margin-bottom: 2%;">
+        <button type="submit" class="btn btn-primary">Save changes</button>&nbsp;
+        <button type="reset" class="btn btn-default" style="  border-color: rgba(24,28,33,0.1); margin-right: 20px;">Cancel</button>
+      </div>
     </div>
-</div>
+</form>
+  
+
+  </div>
+
 @stop
+
+
+

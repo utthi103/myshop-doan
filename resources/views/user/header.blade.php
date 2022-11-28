@@ -36,11 +36,12 @@
                                 <a href="#"><i class="fa fa-user"></i> <?php 
                                     if(isset($account_user)){echo $account_user;
                                     }else{
+                                        
                                     echo"xin chao";
                                     } ?></a>
                                   <?php  if(isset( $id_user)){ ?>
                                     <div class="dropdown-content" style=""> 
-                                        <a href="#"> Accout</a>
+                                        <a href="{{URL::to('/myaccount')}}"> Accout</a>
                                         <a href="{{URL::to('/user-logout')}}">Logout</a> 
                                  </div>
                                  <?php }else{ ?>
