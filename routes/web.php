@@ -280,6 +280,7 @@ Route::post('reset_pass', [\App\Http\Controllers\forgetController::class, 'reset
 Route::get('myaccount', [\App\Http\Controllers\myaccountController::class, 'myaccount']);
 Route::post('save', [\App\Http\Controllers\myaccountController::class, 'save']);
 
-
+// register
+Route::get('register', [\App\Http\Controllers\registerController::class, 'display']);
 
 

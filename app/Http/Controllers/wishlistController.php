@@ -14,11 +14,11 @@ class wishlistController extends Controller
 {
 
     public function checklogin(){
-        $id_user = Session::get('id_admin');
+        $id_user = Session::get('id_user');
             if($id_user){
-                return Redirect::to('/admin');
+                return Redirect::to('/');
             }else{
-                return Redirect::to('/form_login')->send();
+                return Redirect::to('/form_signin')->send();
             }
     }
     public function display(){
