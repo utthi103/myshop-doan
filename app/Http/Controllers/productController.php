@@ -96,9 +96,11 @@ class productController extends Controller
 
     public function showdata($id){
         $this->checklogin();
-        $categories = $this->showtype();
+        $category = $this->showtype();
         $data = productModel::find($id);
-        return view('product.edit',['data'=>$data, 'categories'=>$categories]);
+        $categories = $data->name_category;
+        return view('product.edit',['data'=>$data, 'catego'=>$categories, 'category'=>$category ]);
+        // return $categories;
     }
 
     public function edit($id, Request $request){

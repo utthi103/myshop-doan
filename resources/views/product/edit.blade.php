@@ -37,10 +37,10 @@
                 <div class="form-group">
                     <label for="cars">Loại sản phẩm: </label>
                     <select id="" name="name_category" class="form-control">
-                        @foreach ($categories as $category)
-                        <option value="<?= $category['name_category'] ?>"><?= $category['name_category'] ?></option>
-                        @endforeach
-                      
+                      <?php foreach ($category as $row) { ?>
+                        <option <?= ($row['name_category'] == $catego)?'selected':''?> value="<?= $row['name_category'] ?>"><?= $row['name_category'] ?></option>
+                    <?php } ?>
+                   
                     </select>
                   </div>
 
