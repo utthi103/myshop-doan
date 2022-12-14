@@ -66,8 +66,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
-                    <div class="header__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                    <div class="header__logo" style="text-align: center;">
+                        <a href="./index.html"><img src="{{ asset('img/logo1.jpg') }}" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6" style="text-align: center;">

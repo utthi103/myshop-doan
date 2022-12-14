@@ -37,56 +37,67 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Đăng kí</h2>
-                        <form method="POST" class="register-form" action="{{ URL::to('/register') }}" id="register-form" enctype="multipart/form-data">
+                        <form method="POST" class="register-form" action="{{ URL::to('/registeraccount') }}" id="register-form" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="first_name" id="name" placeholder="Họ"/>
+                                <input type="text" name="first_name" id="name" value="{{ old('first_name') }}" placeholder="Họ"/>
                             </div>
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="last_name" id="name" placeholder="Tên"/>
+                                <input type="text" name="last_name" id="name" value="{{ old('last_name') }}" placeholder="Tên"/>
                             </div>
                          
                             <div class="form-group">
                                 <label for="name"><i class="fa-solid fa-phone"></i></label>
-                                <input type="tel" name="phone" id="phone" placeholder="Số điện thoại"/>
+                                <input type="tel" name="phone" value="{{ old('phone') }}" id="phone" placeholder="Số điện thoại"/>
                             </div>
                             {{-- <label for="">Giới tính</label> <br> --}}
                             <div class="form-group">
-                                <select class="form-select" aria-label="Default select example" style="    border-style: groove;
+                                <select class="form-select" name="gender" value="{{ old('gender') }}" aria-label="Default select example" style="    border-style: groove;
                                 border-color: white;">
                                     <option value="Nam" selected>Nam</option>
                                     <option value="Nữ">Nữ</option>
-                        
                                   </select>
-                               
-                                
                             </div>
                             <div class="form-group">
                                 <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                <input type="email" name="email" id="email" placeholder="Email"/>
+                                <input type="email" name="email" id="email" value="{{ old('email') }}" placeholder="Email"/>
                             </div>
                             <div class="form-group">
                                 <label for="email"><i class="fa-solid fa-location-dot"></i></label>
-                                <input type="text" name="address_user" id="address_user" placeholder="Địa chỉ"/>
+                                <input type="text" name="address_user" id="address_user" value="{{ old('address_user') }}" placeholder="Địa chỉ"/>
                             </div>
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="account_user" id="name" placeholder="Tên đăng nhập"/>
+                                <input type="text" name="account_user" id="name" value="{{ old('account_user') }}" placeholder="Tên đăng nhập"/>
                             </div>
                             
                             <div class="form-group">
                                 <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="pass" id="pass" placeholder="Mật khẩu"/>
+                                <input type="password" name="pass" id="pass" value="{{ old('pass') }}" placeholder="Mật khẩu"/>
                             </div>
                             <div class="form-group">
                                 <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                <input type="password" name="re_pass" id="re_pass" placeholder="Xác nhận mật khẩu"/>
+                                <input type="password" name="re_pass" id="re_pass" value="{{ old('re_pass') }}" placeholder="Xác nhận mật khẩu"/>
                             </div>
-                            <div class="form-group">
-                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                                <label for="agree-term" class="label-agree-term"><span><span></span></span>Tôi đồng ý với tất cả điều khoản</label>
+
+                            <?php
+                            $message = Session::get('msg');
+                            if($message){
+                                echo ' 
+                            <div class="alert alert-success">
+                            <span class="text-alert" style=" font-family: none; color: red; font-size: 15px;">'.$message.'</span>
+                            </div>
+                            ';
+                                Session::put('msg',null);
+                            }
+                            ?>
+                            <div class="" style="display: flex;">
+                                {{-- <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" /> --}}
+                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" style="display: block;" required>
+  <label for="vehicle1" style="    display: contents;"> Tôi đồng ý với các điều khoản</label>
+                                {{-- <label for="agree-term" class="label-agree-term">Tôi đồng ý với tất cả điều khoản</label> --}}
                             </div>
                             <div class="form-group form-button">
                                 <input type="submit" name="signup" id="signup" class="form-submit" value="Đăng kí"/>

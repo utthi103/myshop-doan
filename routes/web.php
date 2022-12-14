@@ -282,6 +282,6 @@ Route::post('save', [\App\Http\Controllers\myaccountController::class, 'save']);
 
 // register
 Route::get('register', [\App\Http\Controllers\registerController::class, 'display']);
-Route::post('register', [\App\Http\Controllers\registerController::class, 'register']);
+Route::post('registeraccount', [\App\Http\Controllers\registerController::class, 'register']);
 
 
