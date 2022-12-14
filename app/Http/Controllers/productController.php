@@ -74,6 +74,7 @@ class productController extends Controller
         $storedPath3 = $image3->move('img', $image3->getClientOriginalName());
 
         $data->decription_product = $request->input('decription_product');
+        $data->decription = $request->input('decription');
 
         $data->sale_product = $request->input('sale_product');
         $data->outstand_product = $request->input('outstand_product');
@@ -153,6 +154,7 @@ class productController extends Controller
 
 
         $data->decription_product = $request->input('decription_product');
+        $data->decription = $request->input('decription');
 
         $data->sale_product = $request->input('sale_product');
         $data->outstand_product = $request->input('outstand_product');

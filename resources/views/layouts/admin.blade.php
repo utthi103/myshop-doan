@@ -68,7 +68,7 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 <script>
   $(document).ready(function() {
-      $("#decription_product").summernote({
+      $("#decription_product, #decription").summernote({
         height:200,
       });
       $('.dropdown-toggle').dropdown();

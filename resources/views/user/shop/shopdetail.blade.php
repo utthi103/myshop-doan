@@ -1,7 +1,7 @@
 @extends('layouts.user')
  
 @section('title')
-    <title>Trang chủ</title>
+    <title>Chi tiết sản phẩm</title>
 
 @stop
 {{-- @section('logo')
@@ -66,9 +66,11 @@
                     
              
                     <div class="product__details__price">${{ $products['price_sale'] }}</div>
-                    <p>Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam
+                    {{-- <p>Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam
                         vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet
-                        quam vehicula elementum sed sit amet dui. Proin eget tortor risus.</p>
+                        quam vehicula elementum sed sit amet dui. Proin eget tortor risus.</p> --}}
+                        {{-- {{ $products['decription_product'] }} --}}
+                        <div>{!! $products['decription_product'] !!}</div>
                     <div class="product__details__quantity">
                         <div class="quantity">
                             <div class="pro-qty">
@@ -113,26 +115,9 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tabs-1" role="tabpanel">
-                            <div class="product__details__tab__desc">
+                            <div class="product__details__tab__desc" style="    padding-left: 5%;">
                                 <h6>Products Infomation</h6>
-                                <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
-                                    Pellentesque in ipsum id orci porta dapibus. Proin eget tortor risus. Vivamus
-                                    suscipit tortor eget felis porttitor volutpat. Vestibulum ac diam sit amet quam
-                                    vehicula elementum sed sit amet dui. Donec rutrum congue leo eget malesuada.
-                                    Vivamus suscipit tortor eget felis porttitor volutpat. Curabitur arcu erat,
-                                    accumsan id imperdiet et, porttitor at sem. Praesent sapien massa, convallis a
-                                    pellentesque nec, egestas non nisi. Vestibulum ac diam sit amet quam vehicula
-                                    elementum sed sit amet dui. Vestibulum ante ipsum primis in faucibus orci luctus
-                                    et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet aliquam
-                                    vel, ullamcorper sit amet ligula. Proin eget tortor risus.</p>
-                                    <p>Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Lorem
-                                    ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit aliquet
-                                    elit, eget tincidunt nibh pulvinar a. Cras ultricies ligula sed magna dictum
-                                    porta. Cras ultricies ligula sed magna dictum porta. Sed porttitor lectus
-                                    nibh. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a.
-                                    Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed
-                                    porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum
-                                    sed sit amet dui. Proin eget tortor risus.</p>
+                                <div>{!! $products['decription'] !!}</div>
                             </div>
                         </div>
                         <div class="tab-pane" id="tabs-2" role="tabpanel">

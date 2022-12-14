@@ -89,9 +89,14 @@
                         {{-- <img src="{{ asset('img/caykimngan.jpg') }}" alt="" width="100px"> --}}
                     </div>
                   </div>
-                  <label for="">Mô tả</label>
+                  <label for="">Mô tả ngắn</label>
                   <div class="form-group">
                     <textarea class="form-control" id="decription_product" placeholder="" name="decription_product"></textarea>
+                  </div>
+
+                  <label for="">Mô tả sản phẩm</label>
+                  <div class="form-group">
+                    <textarea class="form-control" id="decription" placeholder="" name="decription"></textarea>
                   </div>
                   <div class="form-group">
                     <label for="">Sale</label>

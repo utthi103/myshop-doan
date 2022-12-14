@@ -4,7 +4,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
-                            <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                            <a href="./index.html"><img  src="{{ asset('img/logo1.jpg') }}" alt=""></a>
                         </div>
                         <ul>
                             <li>Địa chỉ: 470 Trần Đại Nghĩa - Ngũ Hành Sơn - Đà Nẵng</li>
@@ -25,7 +25,7 @@
                             <li><a href="#">Bản đồ</a></li>
                         </ul>
                         <ul>
-                            <li><a href="#">Who We Are</a></li>
+                            {{-- <li><a href="#">Who We Are</a></li> --}}
                             <li><a href="#">Dịch vụ</a></li>
                             <li><a href="#">Dự án</a></li>
                             <li><a href="#">Liên hệ</a></li>

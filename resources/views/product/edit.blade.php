@@ -88,9 +88,13 @@
                       <input type="hidden" value="{{ $data['image3'] }}" name="image_old3"> 
                     </div>
                   </div>
-                  <label for="">Mô tả</label>
+                  <label for="">Mô tả ngắn</label>
                   <div class="form-group">
                     <textarea class="form-control" id="decription_product" placeholder="" name="decription_product"><?= $data['decription_product'] ?></textarea>
+                  </div>
+                  <label for="">Mô tả sản phẩm</label>
+                  <div class="form-group">
+                    <textarea class="form-control" id="decription" placeholder="" name="decription"><?= $data['decription'] ?></textarea>
                   </div>
                   <div class="form-group">
                     <label for="">Sale</label>
