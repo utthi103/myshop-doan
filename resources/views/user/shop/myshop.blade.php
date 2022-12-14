@@ -1,7 +1,7 @@
 @extends('layouts.user')
  
 @section('title')
-    <title>Trang chủ</title>
+    <title>Cửa hàng</title>
 
 @stop
         

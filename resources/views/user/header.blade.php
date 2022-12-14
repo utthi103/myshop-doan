@@ -6,7 +6,7 @@
                         <div class="header__top__left">
                             <ul>
                                 <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                                <li>Free Shipping for all Order of $99</li>
+                                <li>Giao hàng miễn phí cho tất cả đơn hàng từ 10000$</li>
                             </ul>
                         </div>
                     </div>
@@ -18,7 +18,7 @@
                                 <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
                                 <a href="#"><i class="fa-brands fa-pinterest-p"></i></a>
                             </div>
-                            <div class="header__top__right__language">
+                            {{-- <div class="header__top__right__language">
                                 <img src="img/language.png" alt="">
                                 <div>English</div>
                                 <span class="arrow_carrot-down"></span>
@@ -26,7 +26,7 @@
                                     <li><a href="#">Spanis</a></li>
                                     <li><a href="#">English</a></li>
                                 </ul>
-                            </div>
+                            </div> --}}
                             <?php
              $account_user = Session::get('account_user');
              $id_user = Session::get('id_user');
@@ -37,16 +37,16 @@
                                     if(isset($account_user)){echo $account_user;
                                     }else{
                                         
-                                    echo"xin chao";
+                                    echo"Xin chao";
                                     } ?></a>
                                   <?php  if(isset( $id_user)){ ?>
                                     <div class="dropdown-content" style=""> 
-                                        <a href="{{URL::to('/myaccount')}}"> Accout</a>
-                                        <a href="{{URL::to('/user-logout')}}">Logout</a> 
+                                        <a href="{{URL::to('/myaccount')}}"> Tài khoản</a>
+                                        <a href="{{URL::to('/user-logout')}}">Đăng xuất</a> 
                                  </div>
                                  <?php }else{ ?>
                                     <div class="dropdown-content" style=""> 
-                                        <a href="{{URL::to('/form_signin')}}"> Login</a>
+                                        <a href="{{URL::to('/form_signin')}}"> Đăng nhập</a>
                                  </div>
                                     <?php } ?>             
                            
@@ -70,21 +70,21 @@
                         <a href="./index.html"><img src="img/logo.png" alt=""></a>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6" style="text-align: center;">
                     <nav class="header__menu">
                         <ul>
-                            <li><a href="{{ route('product.home') }}">Home</a></li>
-                            <li class="active"><a href="{{ route('product.listproduct') }}">Shop</a></li>
-                            <li><a href="#">Pages</a>
+                            <li><a href="{{ route('product.home') }}">Trang chủ</a></li>
+                            <li class="active"><a href="{{ route('product.listproduct') }}">Cửa hàng</a></li>
+                            {{-- <li><a href="#">Bài viết</a>
                                 <ul class="header__menu__dropdown">
                                     <li><a href="">Shop Details</a></li>
                                     <li><a href="./shoping-cart.html">Shoping Cart</a></li>
                                     <li><a href="./checkout.html">Check Out</a></li>
                                     <li><a href="./blog-details.html">Blog Details</a></li>
                                 </ul>
-                            </li>
-                            <li><a href="{{ route('product.blog') }}">Blog</a></li>
-                            <li><a href="./contact.html">Contact</a></li>
+                            </li> --}}
+                            <li><a href="{{ route('product.blog') }}">Bài viết</a></li>
+                            <li><a href="./contact.html">Liên hệ</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -132,7 +132,7 @@
                            
                             ?></span></a></li>
                         </ul>
-                        <div class="header__cart__price">item: <span><?php
+                        <div class="header__cart__price">Tổng: <span><?php
                          if (isset($id_user)){
                             echo $price;
                             }else{

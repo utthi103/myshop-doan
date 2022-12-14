@@ -9,4 +9,8 @@ class registerController extends Controller
     public function display(){
         return view('layouts.register');
     }
+
+    public function register(Request $request){
+        return $request->all();
+    }
 }

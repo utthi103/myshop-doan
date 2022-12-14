@@ -45,6 +45,7 @@ class myaccountController extends Controller
 
         $avt = $request->file('avt');
         if($avt!=null){
+            
              $user->avt = $request->file('avt')->getClientOriginalName();
         $path2 = $request->file('avt')->store('img');
         $image2 = $request->file('avt');

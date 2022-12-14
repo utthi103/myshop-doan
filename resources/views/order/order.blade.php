@@ -82,7 +82,7 @@
                         if($orders['status'] ==0){
                             echo"Duyệt";
                         }else{
-                            echo"Bỏ duyệt";
+                            echo"Đã duyệt";
                         }
                     ?>
                 

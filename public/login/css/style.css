@@ -263,6 +263,7 @@ body {
   margin: 0 55px; }
 
 .form-title {
+  font-family: cursive;
   margin-bottom: 33px; }
 
 .signup-image {
@@ -290,9 +291,11 @@ figure {
     background: #4292dc; }
 
 #signin {
+  font-family: cursive;
   margin-top: 16px; }
 
 .signup-image-link {
+  font-family: cursive;
   font-size: 14px;
   color: #222;
   display: block;
@@ -439,6 +442,7 @@ label.valid {
     color: green; }
 
 .label-agree-term {
+  font-family: cursive;
   position: relative;
   top: 0%;
   transform: translateY(0);
@@ -463,6 +467,7 @@ label.valid {
   margin-top: 80px; }
 
 .social-label {
+  font-family: cursive;
   display: inline-block;
   margin-right: 15px; }
 

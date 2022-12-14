@@ -9,7 +9,7 @@
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
-                            <span>All departments</span>
+                            <span>Danh mục sản phẩm</span>
                         </div>
                         <ul>
                         @foreach ($categories as $category)
@@ -24,10 +24,10 @@
                             <form action="{{ route('search.nameca') }}"  enctype="multipart/form-data" method="POST">
                                 @csrf
                                 <div class="hero__search__categories">
-                                    All Categories
-                                    <span class="arrow_carrot-down"></span>
+                                    Danh mục
+                                    {{-- <span class="arrow_carrot-down"></span> --}}
                                 </div>
-                                <input type="text" name="name_product" placeholder="Enter name product you need">
+                                <input type="text" name="name_product" placeholder="Nhập tên sản phẩm cần tìm">
                                 <button type="submit" class="site-btn">SEARCH</button>
                             </form>
                         </div>

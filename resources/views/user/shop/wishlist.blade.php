@@ -38,9 +38,10 @@
                             <?php
                             if((Session::get('wishlist'))!=null){
                                  $wishlists = Session::get('wishlist');
-                            }
                                
                             ?>
+
+                            
                             @foreach ($wishlists as $key=>$wishlist)
                                   <tr>
                                 <td class="shoping__cart__item" style="text-align: center">
@@ -66,6 +67,11 @@
                                 </td>
                             </tr> 
                             @endforeach
+                            <?php }else{ ?>
+                                <div class="alert alert-danger" role="alert">
+                                    Danh sách trống
+                                  </div>
+                                <?php } ?> 
                          
                         </tbody>
                     </table>

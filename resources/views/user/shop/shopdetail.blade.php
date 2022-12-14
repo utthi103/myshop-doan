@@ -78,7 +78,7 @@
                     </div>
                     <a type="button" style="padding: 13px 28px 14px; color: white;
                     background: #7fad39;" data-id_product="{{  $products->id_product}}" class="add_to_cart">ADD TO CARD</a>
-                    <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                    <a type="button" data-id_product="{{  $products->id_product}}" class="heart-icon add_to_wishlist"><span class="icon_heart_alt"></span></a>
                
                     <ul>
                         <li><b>Availability</b> <span>In Stock</span></li>

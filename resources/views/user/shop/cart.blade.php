@@ -58,9 +58,11 @@
                         </thead>
                         <tbody>
                             <?php
-                            
-                                $carts = Session::get('cart');
+                            if((Session::get('cart'))!=null){
+                                 $carts = Session::get('cart');
+                               
                             ?>
+
                             @foreach ($carts as $key=>$cart)
                             <?php
                         
@@ -104,7 +106,11 @@
                                 </td>
                             </tr> 
                             @endforeach
-                         
+                            <?php }else{ ?>
+                                <div class="alert alert-danger" role="alert">
+                                    Giỏ hàng trống
+                                  </div>
+                                <?php } ?> 
                         </tbody>
                     </table>
                 </div>

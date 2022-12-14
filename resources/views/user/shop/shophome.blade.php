@@ -1,5 +1,7 @@
 @extends('layouts.user')
- 
+    @section('title')
+    <title>Trang chủ</title>
+    @stop
 
 @section('logo')
   <div class="bd-example">

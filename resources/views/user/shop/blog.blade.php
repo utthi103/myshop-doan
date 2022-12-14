@@ -1,7 +1,7 @@
 @extends('layouts.user')
  
 @section('title')
-    <title>Trang chủ</title>
+    <title>Bài viết</title>
 
 @stop
 {{-- @section('logo')
