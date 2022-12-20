@@ -79,19 +79,19 @@
                         </div>
                     </div>
                     <a type="button" style="padding: 13px 28px 14px; color: white;
-                    background: #7fad39;" data-id_product="{{  $products->id_product}}" class="add_to_cart">ADD TO CARD</a>
+                    background: #7fad39;" data-id_product="{{  $products->id_product}}" class="add_to_cart">Thêm vào giỏ hàng</a>
                     <a type="button" data-id_product="{{  $products->id_product}}" class="heart-icon add_to_wishlist"><span class="icon_heart_alt"></span></a>
                
                     <ul>
-                        <li><b>Availability</b> <span>In Stock</span></li>
-                        <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
-                        <li><b>Weight</b> <span>0.5 kg</span></li>
-                        <li><b>Share on</b>
+                        {{-- <li><b>Availability</b> <span>In Stock</span></li> --}}
+                        <li><b>Phí giao hàng</b> <span>Miễn phí giao hàng.</span></li>
+                        {{-- <li><b>Weight</b> <span>0.5 kg</span></li> --}}
+                        <li><b>Share</b>
                             <div class="share">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa fa-pinterest"></i></a>
+                                <a href="#" style="font-size: 20px; color: #7fad39;"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" style="font-size: 20px;  color: #7fad39;"><i class="fa-brands fa-twitter"></i></a>
+                                <a href="#" style="font-size: 20px; color: #7fad39;"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#" style="font-size: 20px; color: #7fad39;"><i class="fa-brands fa-pinterest"></i></a>
                             </div>
                         </li>
                     </ul>
@@ -102,25 +102,25 @@
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
-                                aria-selected="true">Description</a>
+                                aria-selected="true">Mô tả</a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"
                                 aria-selected="false">Information</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
                                 aria-selected="false">Reviews <span>(1)</span></a>
-                        </li>
+                        </li> --}}
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tabs-1" role="tabpanel">
                             <div class="product__details__tab__desc" style="    padding-left: 5%;">
-                                <h6>Products Infomation</h6>
+                                <h6>Thông tin sản phẩm</h6>
                                 <div>{!! $products['decription'] !!}</div>
                             </div>
                         </div>
-                        <div class="tab-pane" id="tabs-2" role="tabpanel">
+                        {{-- <div class="tab-pane" id="tabs-2" role="tabpanel">
                             <div class="product__details__tab__desc">
                                 <h6>Products Infomation</h6>
                                 <p>Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
@@ -156,7 +156,7 @@
                                     Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.
                                     Proin eget tortor risus.</p>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

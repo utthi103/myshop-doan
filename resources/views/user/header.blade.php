@@ -5,7 +5,7 @@
                     <div class="col-lg-6">
                         <div class="header__top__left">
                             <ul>
-                                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
+                                <li><i class="fa fa-envelope"></i> planttree@gmail.com</li>
                                 <li>Giao hàng miễn phí cho tất cả đơn hàng từ 10000$</li>
                             </ul>
                         </div>
@@ -84,7 +84,7 @@
                                 </ul>
                             </li> --}}
                             <li><a href="{{ route('product.blog') }}">Bài viết</a></li>
-                            <li><a href="./contact.html">Liên hệ</a></li>
+                            <li><a href="{{ route('contact') }}">Liên hệ</a></li>
                         </ul>
                     </nav>
                 </div>

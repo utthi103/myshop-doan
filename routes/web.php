@@ -15,10 +15,13 @@ Route::post('admin-login', [\App\Http\Controllers\loginController::class, 'login
 // logout
 Route::get('admin-logout', [\App\Http\Controllers\loginController::class, 'logout']);
 // trang chu admin
-Route::get('/admin', function () {
-    return view('layouts.admin');
+// Route::get('/admin', function () {
+//     return view('layouts.admin');
 
-});
+// });
+
+Route::get('admin', [\App\Http\Controllers\orderController::class, 'not_order']);
+
 
 // quan ly danh muc
 Route::prefix('category')->group(function () {
@@ -108,7 +111,30 @@ Route::prefix('order')->group(function () {
     
 
 });
-
+// quan li bai viet
+Route::get('/blog',[
+    'as'=>'blog',
+    'uses'=>'App\Http\Controllers\blogController@tableblog'
+] );
+// Route::get('blog', [\App\Http\Controllers\blogController::class, 'tableblog']);
+Route::get('form_add', [\App\Http\Controllers\blogController::class, 'form']);
+Route::post('add', [\App\Http\Controllers\blogController::class, 'add']);
+Route::get('/delete/{id}',[
+    'as'=>'blog.delete',
+    'uses'=>'App\Http\Controllers\blogController@delete'
+] );
+Route::get('/form_edit/{id}',[
+    'as'=>'form_edit',
+    'uses'=>'App\Http\Controllers\blogController@form_edit'
+] );
+Route::post('/edit/{id}',[
+    'as'=>'blog.edit',
+    'uses'=>'App\Http\Controllers\blogController@edit'
+] );
+Route::get('/blog_detail/{id}',[
+    'as'=>'blog_detail',
+    'uses'=>'App\Http\Controllers\blogController@blog_detail'
+] );
 
 
 
@@ -283,5 +309,12 @@ Route::post('save', [\App\Http\Controllers\myaccountController::class, 'save']);
 // register
 Route::get('register', [\App\Http\Controllers\registerController::class, 'display']);
 Route::post('registeraccount', [\App\Http\Controllers\registerController::class, 'register']);
+
+//contact
+// Route::get('contact', [\App\Http\Controllers\contactController::class, 'display']);
+Route::get('/contact',[
+    'as'=>'contact',
+    'uses'=>'App\Http\Controllers\contactController@display'
+] );
 
 

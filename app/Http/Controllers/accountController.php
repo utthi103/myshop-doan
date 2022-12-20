@@ -23,7 +23,6 @@ class accountController extends Controller
 
 
     public function delete($id){
-        // return "xzxds";
         $account = userModel::find($id);
         $account->delete();
         // Session:: put('msg', 'Xóa thành công');

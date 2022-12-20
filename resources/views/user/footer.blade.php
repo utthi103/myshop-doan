@@ -9,7 +9,7 @@
                         <ul>
                             <li>Địa chỉ: 470 Trần Đại Nghĩa - Ngũ Hành Sơn - Đà Nẵng</li>
                             <li>Điện thoại: +65 11.188.888</li>
-                            <li>Email: hello@colorlib.com</li>
+                            <li>Email: planttree@gmail.com</li>
                         </ul>
                     </div>
                 </div>

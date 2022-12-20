@@ -1,8 +1,8 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #0b092e; ">
     <!-- Brand Logo -->
             <a href="index3.html" class="brand-link" style="text-align: center">
-                  <i class="fa-brands fa-pagelines" style="color:green; font-size: 35px;"></i>
-                <span class="brand-text font-weight-light">tree</span>
+                  {{-- <i class="fa-brands fa-pagelines" style="color:green; font-size: 35px;"></i> --}}
+                <span class="brand-text font-weight-light" style="color: chartreuse;">PLANT TREE</span>
               </a>
 
     <!-- Sidebar -->
@@ -26,7 +26,7 @@
                 </div>
 
       <!-- SidebarSearch Form -->
-                <div class="form-inline">
+                {{-- <div class="form-inline">
                   <div class="input-group" data-widget="sidebar-search">
                     <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
                     <div class="input-group-append">
@@ -35,7 +35,7 @@
                       </button>
                     </div>
                   </div>
-                </div>
+                </div> --}}
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -78,24 +78,33 @@
               </p>
             </a>
           </li>
-          <div class="nav-item-divider" style="height: 1px;
-          margin: 1rem 0;
-          overflow: hidden;
-          background-color: rgba(236, 238, 239, 0.3);"></div>
           <li class="nav-item">
-            <a href="{{ route('account.detail') }}" class="nav-link">
-              <i class="fa-solid fa-user"></i>
+            <a href="{{ route('blog') }}" class="nav-link">
+              <i class="fa-brands fa-slack"></i>
               <p>
-              Cá nhân
+               Quản lý bài viết
                 {{-- <span class="right badge badge-danger">New</span> --}}
               </p>
             </a>
           </li>
+          <div class="nav-item-divider" style="height: 1px;
+          margin: 1rem 0;
+          overflow: hidden;
+          background-color: rgba(236, 238, 239, 0.3);"></div>
+          {{-- <li class="nav-item">
+            <a href="{{ route('account.detail') }}" class="nav-link">
+              <i class="fa-solid fa-user"></i>
+              <p>
+              Cá nhân
+                <span class="right badge badge-danger">New</span>
+              </p>
+            </a>
+          </li> --}}
           <li class="nav-item">
             <a href="{{URL::to('/admin-logout')}}" class="nav-link">
                 <i class="fa-solid fa-right-from-bracket"></i>
               <p>
-                Logout
+                Đăng xuất
                 {{-- <span class="right badge badge-danger">New</span> --}}
               </p>
             </a>

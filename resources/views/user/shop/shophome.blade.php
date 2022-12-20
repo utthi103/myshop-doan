@@ -122,77 +122,6 @@
 </div>
 
 <section class="related-product">
-    {{-- <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title related__product__title">
-                    <h2>Related Product</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
-                        <ul class="product__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="product__item__text">
-                        <h6><a href="#">Crab Pool Security</a></h6>
-                        <h5>$30.00</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
-                        <ul class="product__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="product__item__text">
-                        <h6><a href="#">Crab Pool Security</a></h6>
-                        <h5>$30.00</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">
-                        <ul class="product__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="product__item__text">
-                        <h6><a href="#">Crab Pool Security</a></h6>
-                        <h5>$30.00</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="img/product/product-7.jpg">
-                        <ul class="product__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="product__item__text">
-                        <h6><a href="#">Crab Pool Security</a></h6>
-                        <h5>$30.00</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
 
     <div class="col-lg-11 col-md-12">
         <div class="product__discount" style="margin-left: 10%;">
@@ -255,15 +184,25 @@
             <div class="row">
                 <div class="product__discount__slider owl-carousel">
                     @foreach ($product_oustand as $product_oustands)
+                    <form >
+                        @csrf
+                        {{-- 'img/'.$product['image1'].'' --}}
+                        <input type="hidden" name="" value="{{ $product_oustands->id_product }}" class="cart_product_id_{{ $product_oustands->id_product }}">
+                        <input type="hidden" name="" value="{{ $product_oustands->name_product }}" class="cart_product_name_{{ $product_oustands->id_product }}">
+                        <input type="hidden" name="" value="{{ $product_oustands->image1 }}" class="cart_product_img_{{  $product_oustands->id_product}}">
+                        <input type="hidden" name="" value="{{ $product_oustands->price_sale }}" class="cart_product_price_sale_{{ $product_oustands->id_product }}">
+                        <input type="hidden" name="" value="{{ $product_oustands->count_product }}" class="cart_product_count_{{ $product_oustands->id_product }}">
+                        <input type="hidden" name="" value="1" class="cart_product_qty_{{ $product_oustands->id_product }}">
+
                     <div class="col-lg-4">
                         <div class="product__discount__item">
                             <div class="product__discount__item__pic set-bg"
                                 data-setbg="{{ asset('img/'.$product_oustands['image1'].'') }}">
                                 <div class="product__discount__percent">{{ $product_oustands['sale_product'] }}%</div>
                                 <ul class="product__item__pic__hover">
-                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                    <li><a type="button" data-id_product="{{  $product_oustands->id_product}}" class="add_to_wishlist"><i class="fa fa-heart"></i></a></li>
                                     <li><a href="{{ route('product.detail',['id'=> $product_oustands->id_product]) }}"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                    <li><a type="button" data-id_product="{{   $product_oustands->id_product}}" class="add_to_cart"><i class="fa fa-shopping-cart"></i></a></li>
                                 </ul>
                             </div>
                             <div class="product__discount__item__text">
@@ -278,12 +217,10 @@
                                     <li  class="start"><i class="fa-regular fa-star"></i></i></li>
                                     <li  class="start"><i class="fa-regular fa-star"></i></i></li>
                                    </ul>
-                                <?php
-                                $price_sale = $product_oustands['price_product'] - ($product_oustands['price_product']*$product_oustands['sale_product']/100 );
-                            ?>
+                             
                                 <span style="font-weight: 630;
                                 font-size: 18px;
-                                color: #79a206;" class="price_sale">$<?php echo  $price_sale ?> </span>
+                                color: #79a206;" class="price_sale"> ${{ $product_oustands['price_sale'] }} </span>
                                 
                                 <span style="text-decoration: line-through;
                                 font-weight: 400;
@@ -292,6 +229,7 @@
                             </div>
                         </div>
                     </div>
+                </form>
                     @endforeach
                 </div>
             </div>
@@ -305,56 +243,31 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title from-blog__title">
-                        <h2>From The Blog</h2>
+                        <h2>Bài viết</h2>
                     </div>
                 </div>
             </div>
             <div class="row">
+                 @foreach ($blog as $item)
                 <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="blog__item">
+                          <div class="blog__item">
                         <div class="blog__item__pic">
-                            <img src="https://technext.github.io/ogani/img/blog/blog-1.jpg" alt="">
+                            <img src="{{ asset('img/'.$item['image'].'') }}" alt=""  width="200px">
                         </div>
                         <div class="blog__item__text">
                             <ul>
-                                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                <li><i class="fa fa-comment-o"></i> 5</li>
+                                <li><i class="fa fa-calendar-o"></i>{{ $item['date'] }}</li>
+                                {{-- <li><i class="fa fa-comment-o"></i> 5</li> --}}
                             </ul>
-                            <h5><a href="#">Cooking tips make cooking simple</a></h5>
-                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
+                            <h5><a href="#">{{ $item['category'] }}</a></h5>
+                            <p> {{ $item['title'] }} </p>
                         </div>
                     </div>
+                    
+                  
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="blog__item">
-                        <div class="blog__item__pic">
-                            <img src="https://technext.github.io/ogani/img/blog/blog-2.jpg" alt="">
-                        </div>
-                        <div class="blog__item__text">
-                            <ul>
-                                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                <li><i class="fa fa-comment-o"></i> 5</li>
-                            </ul>
-                            <h5><a href="#">6 ways to prepare breakfast for 30</a></h5>
-                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="blog__item">
-                        <div class="blog__item__pic">
-                            <img src="https://technext.github.io/ogani/img/blog/blog-3.jpg" alt="">
-                        </div>
-                        <div class="blog__item__text">
-                            <ul>
-                                <li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-                                <li><i class="fa fa-comment-o"></i> 5</li>
-                            </ul>
-                            <h5><a href="#">Visit the clean farm in the US</a></h5>
-                            <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+                
             </div>
         </div>
     </section>

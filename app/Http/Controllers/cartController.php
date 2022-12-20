@@ -51,19 +51,19 @@ class cartController extends Controller
 
 
 
-    public function delete_cart($rowId){
+    // public function delete_cart($rowId){
         
-        $this->checklogin();
-        Cart::update($rowId, 0);
-        $catagories = categoryModel::all();
-        // return view('user.shop.cart',['categories'=>$catagories]);
-        // return Redirect::to('/cart');
-        return redirect()->route('product.cart');
-    }
+    //     $this->checklogin();
+    //     Cart::update($rowId, 0);
+    //     $catagories = categoryModel::all();
+    //     // return view('user.shop.cart',['categories'=>$catagories]);
+    //     // return Redirect::to('/cart');
+    //     return redirect()->route('product.cart');
+    // }
 
-    public function update($rowId){
-        return Cart::search($rowId);
-    }
+    // public function update($rowId){
+    //     return Cart::search($rowId);
+    // }
 
 
 
@@ -80,7 +80,7 @@ class cartController extends Controller
                if($value['id_product']==$data['id_product']){
                 $check = $check+1;
                }
-
+            }
                if($check==0){
                 if($data['qty']<=$data['count']){
                     $cart[] = array(
@@ -92,12 +92,10 @@ class cartController extends Controller
                    'count'=>$data['count'],
                    'qty'=>$data['qty'],
                );
-               }else{
-                    die();
                }
                 Session::put('cart', $cart);
                }
-            }
+            
         }else{
             if($data['qty']<=$data['count']){
                  $cart[] = array(
@@ -109,10 +107,7 @@ class cartController extends Controller
                 'count'=>$data['count'],
                 'qty'=>$data['qty'],
             );
-            }else{
-             die();
             }
-           
         }
         Session::put('cart', $cart);
         Session::save();

@@ -76,13 +76,13 @@
 
                 </td>
                   <td >
-                    <a href="{{ route('account.role',['id'=>$users->id_user]) }}" type="button" style="background-color:#f6c23e; " class="btn btn-success">    <?php
+                    {{-- <a href="{{ route('account.role',['id'=>$users->id_user]) }}" type="button" style="background-color:#f6c23e; " class="btn btn-success">    <?php
                       if($users['id_auth']=='1'){
                         echo "Bỏ quyền";
                       }else{
                         echo "Trao quyền";
                       }
-                    ?></a>
+                    ?></a> --}}
                     <a href="{{ route('account.delete',['id'=>$users->id_user]) }}" onclick="return confirm('Bạn có chắn chắn muốn xóa?');" type="button" style="background-color:red; "  class="btn btn-success">
                         Xóa
                       </a>

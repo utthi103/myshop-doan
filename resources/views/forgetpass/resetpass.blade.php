@@ -35,7 +35,7 @@
             }else if(isset($pass_sucss)){
                 echo ' 
             <div class="alert alert-success"">
-            <span class="text-alert" style=" font-family: none; color: red; font-size: 15px;">'.$pass_sucss.'</span>
+            <span class="text-alert" style=" font-family: none; color: #816127; font-size: 15px;">'.$pass_sucss.'</span>
             </div>
             ';
                 Session::put('pass_sucss',null);

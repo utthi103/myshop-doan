@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Models\productModel;
 use App\Models\categoryModel;
+use App\Models\blogModel;
 // use App\Models\categoryModel;
 use Illuminate\Support\File;
 use Session;
@@ -35,10 +36,12 @@ public function home(){
         // $product_oustand = DB::table('product')->where('outstand_product', 'có')->get();
         $product_oustand = productModel::where('outstand_product', 'có')->get();
         $product_new = productModel::orderBy('date_product', 'desc')->take(4)->get();
+        $blog = blogModel::all();
        
         return view('user.shop.shophome',[ 'categories'=>$catagories,
         'product_oustand'=>$product_oustand,
-            'product_new'=>$product_new
+            'product_new'=>$product_new,
+            'blog'=>$blog
         ]);
         // return $product_new ;
 }
@@ -62,7 +65,7 @@ public function search_price(Request $request){
     $price_sale = productModel::whereBetween('price_sale', [$min,$max])->paginate(6);
     // return $min[1];
     return view('user.shop.myshop', ['price_sale'=>$price_sale,'categories'=>$catagories]);
-    // return $min;
+    // return $max;
 }
     public function search_name(Request $request){
         $name_product = $request->input('name_product');

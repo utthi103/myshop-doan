@@ -57,7 +57,7 @@
             <div class="col-lg-3 col-md-5">
                 <div class="sidebar">
                     <div class="sidebar__item">
-                        <h4>Department</h4>
+                        <h4>Danh mục sản phẩm</h4>
                         <ul>
                             @foreach ($categories as $category)
                             <li><a href="{{ route('product.listcategory',['id'=> $category->name_category]) }}">{{ $category['name_category'] }}</a></li>
@@ -66,10 +66,10 @@
                         </ul>
                     </div>
                     <div class="sidebar__item">
-                        <h4>Price</h4>
+                        <h4>Giá</h4>
                         <div class="price-range-wrap">
                             <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                                data-min="0" data-max="10000">
+                                data-min="0" data-max="100000">
                                 <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
                                 <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
                                 <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
@@ -354,7 +354,7 @@
                             <div class="filter__found">
                                 
 
-                                <h6><span>16</span> Products found</h6>
+                                {{-- <h6><span>16</span> Products found</h6> --}}
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-3">

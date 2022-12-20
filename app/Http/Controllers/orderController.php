@@ -34,6 +34,11 @@ class orderController extends Controller
         return view('order.order', ['order'=>$order]);
         // return $order;
     }
+
+    public function not_order(){
+        $order=orderModel::where('status', 0)->paginate(4);
+        return view('order.not_order', ['order'=>$order]);
+    }
     public function duyet($id, Request $request){
         $this->checklogin();
         $order_edit = orderModel::find($id);

@@ -20,12 +20,8 @@
       <div class="row no-gutters row-bordered row-border-light">
         <div class="col-md-3 pt-0">
           <div class="list-group list-group-flush account-settings-links">
-            <a class="list-group-item list-group-item-action active" style="margin-top: 7%;" data-toggle="list" href="#account-general">General</a>
-            <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-change-password">Change password</a>
-            {{-- <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-info">Info</a>
-            <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-social-links">Social links</a>
-            <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-connections">Connections</a>
-            <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-notifications">Notifications</a> --}}
+            <a class="list-group-item list-group-item-action active" style="margin-top: 7%;" data-toggle="list" href="#account-general">Thông tin</a>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-change-password">Thay đổi mật khẩu</a>
           </div>
         </div>
         <div class="col-md-9">
@@ -129,8 +125,8 @@
         </div>
       </div>
       <div class="text-right mt-3" style="    margin-bottom: 2%;">
-        <button type="submit" class="btn btn-primary">Save changes</button>&nbsp;
-        <button type="reset" class="btn btn-default" style="  border-color: rgba(24,28,33,0.1); margin-right: 20px;">Cancel</button>
+        <button type="submit" class="btn btn-primary">Lưu</button>&nbsp;
+        <button type="reset" class="btn btn-default" style="  border-color: rgba(24,28,33,0.1); margin-right: 20px;">Hủy bỏ</button>
       </div>
     </div>
 </form>
