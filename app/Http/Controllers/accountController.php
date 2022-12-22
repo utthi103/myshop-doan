@@ -14,6 +14,9 @@ use Session;
 session_start();
 class accountController extends Controller
 {
+    
+  
+    
     public function display(){
         $id_admin = Session::get('id_admin');
         $user = userModel::where('id_user','<>',$id_admin )->get();

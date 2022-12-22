@@ -12,6 +12,7 @@ session_start();
 
 class blogController extends Controller
 {
+    
 
     // quan li admin
     public function tableblog(){

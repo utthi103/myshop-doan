@@ -11,6 +11,16 @@ use Session;
 session_start();
 class couponController extends Controller
 {
+
+    public function checklogin(){
+        $id_user = Session::get('id_admin');
+        if($id_user){
+            return Redirect::to('/admin');
+        }else{
+            return Redirect::to('/admin')->send();
+        }
+    }
+
    public function apply(Request $request){
     $code = $request->input('code');
     $coupon = couponModel::where('code', $code)->where('number', '>', 0)->first();
@@ -42,16 +52,18 @@ class couponController extends Controller
 //    ADMIN
 
 public function coupon(){
+    $this->checklogin();
     $coupon = couponModel::paginate(5);
     return view('user.coupon.list_coupon',['coupon'=>$coupon]);
 }
 
 public function form_coupon(){
-
+    $this->checklogin();
     return view('user.coupon.add_coupon');
 }
 
         public function add_coupon(Request $request){
+            $this->checklogin();
             $coupon = new couponModel;
             $coupon->name = $request->input('name');
             $coupon->code = $request->input('code');
@@ -63,6 +75,7 @@ public function form_coupon(){
         }
 
         public function delete_coupon($id){
+            $this->checklogin();
             $coupon = couponModel::find($id);
             $coupon->delete();
             Session:: put('msg', 'Xóa thành công');
@@ -70,11 +83,13 @@ public function form_coupon(){
         }
 
         public function form_edit_coupon($id){
+            $this->checklogin();
             $coupon = couponModel::find($id);
             return view('user.coupon.edit_coupon', ['coupon'=>$coupon]);
         }
 
         public function edit_coupon($id, Request $request){
+            $this->checklogin();
             $coupon = couponModel::find($id);
             $coupon->name = $request->input('name');
             $coupon->code = $request->input('code');
