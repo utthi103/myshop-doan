@@ -46,15 +46,19 @@
                             @csrf
                             <div class="form-group">
                                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="account_user" id="account_user" placeholder="Tên đăng nhập" value="{{ old('account_user') }}" required/>
+                                <input type="text" name="account_user" id="account_user" placeholder="Tên đăng nhập"
+                                @if(Cookie::has('account')) value="{{ Cookie::get('account') }}" @else value="{{ old('account_user') }}" @endif
+                               required/>
                             </div>
                             <div class="form-group">
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="pass_user" id="pass_user" placeholder="Mật khẩu" value="{{ old('pass_user') }}" required/>
+                                <input type="password" name="pass_user" id="pass_user" placeholder="Mật khẩu"
+                                @if(Cookie::has('pass')) value="{{ Cookie::get('pass') }}" @else value="{{ old('pass_user') }}" @endif
+                                 required/>
                             </div>
                             <div class="form-group">
-                                <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
-                                <label for="remember-me" class="label-agree-term"><span><span></span></span>Nhớ mật khẩu </label>
+                                <input type="checkbox" name="remember" id="remember" class="agree-term" />
+                                <label for="remember" class="label-agree-term"><span><span></span></span>Nhớ mật khẩu </label>
                                 <a href=" {{URL::to('/show_email')}} " style="color: red;">Quên mật khẩu</a>
                             </div>
                             <?php

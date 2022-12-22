@@ -8,6 +8,9 @@ use Illuminate\Support\File;
 use App\Models\productModel;
 use App\Models\categoryModel;
 use App\Models\userModel;
+use App\Models\orderModel;
+use App\Models\order_detailModel;
+
 use Session;
 session_start();
 class myaccountController extends Controller
@@ -78,5 +81,23 @@ class myaccountController extends Controller
         // return redirect()->back();
         return Redirect::to('/myaccount')->withInput();
 
+    }
+
+    public function history(){
+        $categories = categoryModel::all();
+        $id_user = Session::get('id_user');
+        $order = orderModel::where('id_user', $id_user)->where('status',1)->get();
+        $not_order = orderModel::where('id_user', $id_user)->where('status',0)->get();
+        return view('user.shop.table_history',['categories'=>$categories,'order'=>$order, 'not_order'=>$not_order]);
+        // return $order;
+    }
+
+    public function history_detail($id){
+        $categories = categoryModel::all();
+        $order_detail = order_detailModel::where('id_order', $id)->get();
+        // $notorder_detail = order_detailModel::where('id_order', $id)->get();
+        return view('user.shop.history_detail',['categories'=>$categories,'order_detail'=>$order_detail
+    ]);
+        // return $order_detail;
     }
 }

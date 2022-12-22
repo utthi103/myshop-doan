@@ -87,6 +87,15 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ URL::to('coupon') }}" class="nav-link">
+              <i class="fa-brands fa-slack"></i>
+              <p>
+               Quản lý mã giảm giá
+                {{-- <span class="right badge badge-danger">New</span> --}}
+              </p>
+            </a>
+          </li>
           <div class="nav-item-divider" style="height: 1px;
           margin: 1rem 0;
           overflow: hidden;

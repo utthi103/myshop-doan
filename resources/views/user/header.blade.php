@@ -42,6 +42,7 @@
                                   <?php  if(isset( $id_user)){ ?>
                                     <div class="dropdown-content" style=""> 
                                         <a href="{{URL::to('/myaccount')}}"> Tài khoản</a>
+                                        <a href="{{URL::to('/history')}}"> Lịch sử</a>
                                         <a href="{{URL::to('/user-logout')}}">Đăng xuất</a> 
                                  </div>
                                  <?php }else{ ?>

@@ -8,6 +8,7 @@ use App\Models\userModel;
 use App\Models\adminModel;
 use Illuminate\Support\Facades\Redirect;
 use Session;
+use Cookie;
 session_start();
 class userloginController extends Controller
 {
@@ -20,6 +21,10 @@ class userloginController extends Controller
                 Session::put('account_user', $user->account_user);
                 Session::put('id_user',$user->id_user);
                 Session::put('email_user',$user->email_user);
+                if($request->has('remember')){
+                    Cookie::queue('account', $account_user,1 );
+                    Cookie::queue('pass', $request->pass_user,1 );
+                }
                 return Redirect::to('/');
             }else{
                 Session::put('message','Mật khẩu hoặc tên đăng nhập không đúng. Vui lòng kiểm tra lại thông tin');
@@ -39,10 +44,11 @@ class userloginController extends Controller
         
         
         public function logout(){
-             $this->checklogin();
+            //  $this->checklogin();
             Session::put('account_user',null);
     		Session::put('id_user',null);
             Session::put('email_user',null);
+            Session::put('cart', null);
             return Redirect::to('/');
         }
 }

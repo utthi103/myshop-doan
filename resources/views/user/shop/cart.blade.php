@@ -37,8 +37,8 @@
                 ?>
                 <div class="shoping__cart__table">
                     <?php
-                         $total = 0;
-                    $carts = Cart::content();
+                    //      $total = 0;
+                    // $carts = Cart::content();
    ?>   
                     <form action="{{ URL::to('/update_cart') }}" method="POST">
                         @csrf
@@ -58,6 +58,7 @@
                         </thead>
                         <tbody>
                             <?php
+                             $total = 0;
                             if((Session::get('cart'))!=null){
                                  $carts = Session::get('cart');
                                
@@ -128,28 +129,73 @@
             <div class="col-lg-6">
                 <div class="shoping__continue">
                     <div class="shoping__discount">
-                        <h5>Discount Codes</h5>
-                        <form action="#">
-                            <input type="text" placeholder="Enter your coupon code">
-                            <button type="submit" class="site-btn">APPLY COUPON</button>
+                        <h5>Mã giảm giá</h5>
+                        <form action="{{ URL::to('apply') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input type="text" name="code" placeholder="Nhập mã giảm giá" value="{{ old('code') }}">
+                            <button type="submit" class="site-btn" style="font-family: initial;">Áp dụng mã giảm</button>
                         </form>
-                    </div>
+                        <form action="{{ URL::to('delete') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                        <button type="submit" class="site-btn" style="font-family: initial; margin-left: 48.5%; margin-top: 2%;
+                        width: 41%;">Xóa mã giảm</button>
+                        </form>
+                        <?php
+                        $success_coupon = Session::get('success_coupon');
+                        $erro = Session::get('erro');
+                        if($success_coupon){
+                            echo ' 
+                        <div class="alert alert-success" style="    margin-top: 3%;
+    width: 90%;">
+                        <span class="text-alert">'.$success_coupon.'</span>
+                        </div>
+                        ';
+                            Session::put('success_coupon',null);
+                        }
+        
+                        else if($erro){
+                            echo ' 
+                        <div class="alert alert-danger" style="    margin-top: 3%;
+    width: 90%;">
+                        <span class="text-alert">'.$erro.'</span>
+                        </div>
+                        ';
+                            Session::put('erro',null);
+                        }
+                        ?>
+                       </div>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="shoping__checkout">
-                    <h5>Cart Total</h5>
+                    <h5>Tổng giỏ hàng</h5>
                     <ul>
-                        <li>Subtotal <span><?php
+                        <li>Tổng phụ <span><?php
                         //   echo '$'.number_format($total,0,',','.');
                         echo $total;
                             ?></span></li>
-                        <li>Total <span><?php
-                                //  echo '$'.number_format($total,0,',','.');
-                                echo $total;
+
+        <?php
+    $id = Session::get('id_coupon');
+    if(isset($id)){
+        $percent = Session::get('percent');
+        $discount = ($total * $percent )/100;
+        $tong = $total - $discount;
+        echo'
+        <li> Số tiền được giảm <span>
+             '.$discount.'
+            </span></li>
+        ';
+    }
+
+?>
+                        <li>Tổng <span><?php
+                               if(isset($id)){echo $tong ;}
+                            else{echo $total; }
                                 ?></span></li>
                     </ul>
-                    <a href="{{ URL::to('/show_checkout') }}" class="primary-btn">PROCEED TO CHECKOUT</a>
+                    <a href="{{ URL::to('/show_checkout') }}" class="primary-btn">Kiểm tra thông tin - Đặt hàng </a>
+
                 </div>
             </div>
         </div>

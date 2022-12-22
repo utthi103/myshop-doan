@@ -9,6 +9,7 @@ use App\Models\categoryModel;
 use App\Models\userModel;
 use App\Models\orderModel;
 use App\Models\order_detailModel;
+use App\Models\couponModel;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Redirect;
 use Session;
@@ -82,6 +83,18 @@ class checkoutController extends Controller
         $message->to($to_email)->subject('Xác nhận đơn hàng');//send this mail with
         $message->from($to_email, $to_name);//send from this mail
         });
+
+        // coupon
+        $id = Session::get('id_coupon');
+        if(isset( $id)){
+            $coupon = couponModel::where('id', $id)->first();
+            $coupon->number =  $coupon->number - 1;
+            $coupon->save();
+            Session::put('id_coupon', null);
+        Session::put('percent',null);
+        }
+        Session::put('cart',null);
+
     return Redirect::to('/show_checkout')->withInput();
     // return view('user.shop.checkout');
 

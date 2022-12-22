@@ -318,3 +318,23 @@ Route::get('/contact',[
 ] );
 
 
+// Lich su
+// Route::get('/history',[
+//     'as'=>'history',
+//     'uses'=>'App\Http\Controllers\myaccountController@history'
+// ] );
+
+Route::get('history', [\App\Http\Controllers\myaccountController::class, 'history']);
+Route::get('/history/{id}',[
+    'as'=>'history_detail',
+    'uses'=>'App\Http\Controllers\myaccountController@history_detail'
+] );
+
+// coupon
+Route::post('apply', [\App\Http\Controllers\couponController::class, 'apply']);
+Route::post('delete', [\App\Http\Controllers\couponController::class, 'delete']);
+// admin
+Route::get('coupon', [\App\Http\Controllers\couponController::class, 'coupon']);
+Route::get('form_coupon/{id}', [\App\Http\Controllers\couponController::class, 'form_coupon']);
+
+
