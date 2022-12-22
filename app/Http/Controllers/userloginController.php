@@ -22,8 +22,8 @@ class userloginController extends Controller
                 Session::put('id_user',$user->id_user);
                 Session::put('email_user',$user->email_user);
                 if($request->has('remember')){
-                    Cookie::queue('account', $account_user,1 );
-                    Cookie::queue('pass', $request->pass_user,1 );
+                    Cookie::queue('account', $account_user,5 );
+                    Cookie::queue('pass', $request->pass_user,5 );
                 }
                 return Redirect::to('/');
             }else{

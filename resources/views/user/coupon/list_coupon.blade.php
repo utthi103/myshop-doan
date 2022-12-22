@@ -19,7 +19,7 @@
             <input type="search" style="border-radius: 10px; border-color: floralwhite; width: 100%; height: 93%;" placeholder="Tìm kiếm tại đây">
           </div>
           <div class="col-sm-4">
-            <a href="{{ route('category.create') }}" class="btn btn-success float-right">Thêm mã mới</a>
+            <a href="{{ URL::to('form_coupon') }}" class="btn btn-success float-right">Thêm mã mới</a>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -63,8 +63,8 @@
                   <td>{{ $coupons['percent'] }} %</td>
                   <td>{{ $coupons['number'] }}</td>
                   <td >
-                    {{-- <a href="{{ route('coupons.showdata', ['id'=> $coupons->id]) }}" type="button" style="background-color:#f6c23e; " class="btn btn-success">Sửa </a>
-                    <a href="{{ route('coupons.delete', ['id'=> $coupons->id]) }}" onclick="return confirm('Bạn có chắn chắn muốn xóa?');" type="button" style="background-color:red; "  class="btn btn-success">Xóa</a> --}}
+                    <a href="{{ URL::to('form_edit_coupon', ['id'=> $coupons->id]) }}" type="button" style="background-color:#f6c23e; " class="btn btn-success">Sửa </a>
+                    <a href="{{ URL::to('delete_coupon', ['id'=> $coupons->id]) }}" onclick="return confirm('Bạn có chắn chắn muốn xóa?');" type="button" style="background-color:red; "  class="btn btn-success">Xóa</a>
                     </td>
               @endforeach
              

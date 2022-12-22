@@ -46,4 +46,43 @@ public function coupon(){
     return view('user.coupon.list_coupon',['coupon'=>$coupon]);
 }
 
+public function form_coupon(){
+
+    return view('user.coupon.add_coupon');
+}
+
+        public function add_coupon(Request $request){
+            $coupon = new couponModel;
+            $coupon->name = $request->input('name');
+            $coupon->code = $request->input('code');
+            $coupon->percent = $request->input('percent');
+            $coupon->number = $request->input('number');
+            $coupon->save();
+            Session:: put('msg', 'Thêm mã thành công');
+            return Redirect::to('/coupon');
+        }
+
+        public function delete_coupon($id){
+            $coupon = couponModel::find($id);
+            $coupon->delete();
+            Session:: put('msg', 'Xóa thành công');
+            return Redirect::to('/coupon');
+        }
+
+        public function form_edit_coupon($id){
+            $coupon = couponModel::find($id);
+            return view('user.coupon.edit_coupon', ['coupon'=>$coupon]);
+        }
+
+        public function edit_coupon($id, Request $request){
+            $coupon = couponModel::find($id);
+            $coupon->name = $request->input('name');
+            $coupon->code = $request->input('code');
+            $coupon->percent = $request->input('percent');
+            $coupon->number = $request->input('number');
+            $coupon->save();
+            Session:: put('msg', 'Sửa thành công');
+            return Redirect::to('/coupon');
+        }
+
 }

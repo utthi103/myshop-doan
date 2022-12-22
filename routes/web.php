@@ -335,6 +335,10 @@ Route::post('apply', [\App\Http\Controllers\couponController::class, 'apply']);
 Route::post('delete', [\App\Http\Controllers\couponController::class, 'delete']);
 // admin
 Route::get('coupon', [\App\Http\Controllers\couponController::class, 'coupon']);
-Route::get('form_coupon/{id}', [\App\Http\Controllers\couponController::class, 'form_coupon']);
+Route::get('form_coupon', [\App\Http\Controllers\couponController::class, 'form_coupon']);
+Route::post('add_coupon', [\App\Http\Controllers\couponController::class, 'add_coupon']);
+Route::get('delete_coupon/{id}', [\App\Http\Controllers\couponController::class, 'delete_coupon']);
+Route::get('form_edit_coupon/{id}', [\App\Http\Controllers\couponController::class, 'form_edit_coupon']);
+Route::post('edit_coupon/{id}', [\App\Http\Controllers\couponController::class, 'edit_coupon']);
 
 
