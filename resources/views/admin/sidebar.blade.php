@@ -1,7 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #0b092e; ">
     <!-- Brand Logo -->
             <a href="index3.html" class="brand-link" style="text-align: center">
-                  {{-- <i class="fa-brands fa-pagelines" style="color:green; font-size: 35px;"></i> --}}
                 <span class="brand-text font-weight-light" style="color: chartreuse;">PLANT TREE</span>
               </a>
 

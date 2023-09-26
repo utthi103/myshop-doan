@@ -397,9 +397,9 @@
                                {{-- <h5>{{ $price_sales['price_product'] }}</h5> --}}
                                {{-- <div class="product__item__price" style="font-weight: 500;font-size: 15px; color: #79a206;">$30.00 <span style="text-decoration: line-through;font-size: 12px;">$88.00</span></div> --}}
                               
-                               <span style="" class="price_sale">${{ $price_sales['price_sale'] }}</span>
+                               <span style="" class="price_sale">{{ $price_sales['price_sale'] }}</span>
                                
-                               <span style=" " class="price_old">${{ $price_sales['price_product'] }}</span>
+                               <span style=" " class="price_old">{{ $price_sales['price_product'] }}</span>
                            </div>
                        </div>
                    </div>
@@ -437,9 +437,9 @@
                                     {{-- <h5>{{ $item['price_product'] }}</h5> --}}
                                     {{-- <div class="product__item__price" style="font-weight: 500;font-size: 15px; color: #79a206;">$30.00 <span style="text-decoration: line-through;font-size: 12px;">$88.00</span></div> --}}
                                    
-                                    <span style="" class="price_sale">${{ $item['price_sale'] }}</span>
+                                    <span style="" class="price_sale">{{ $item['price_sale'] }}</span>
                                     
-                                    <span style=" " class="price_old">${{ $item['price_product'] }}</span>
+                                    <span style=" " class="price_old">{{ $item['price_product'] }}</span>
                                 </div>
                             </div>
                         </div>
@@ -475,9 +475,9 @@
                                <h6><a href="#">{{ $result['name_product'] }}</a></h6>
                                {{-- <h5>{{ $result['price_product'] }}</h5> --}}
                                {{-- <div class="product__item__price" style="font-weight: 500;font-size: 15px; color: #79a206;">$30.00 <span style="text-decoration: line-through;font-size: 12px;">$88.00</span></div> --}}
-                               <span style="" class="price_sale">${{ $result['price_sale'] }} </span>
+                               <span style="" class="price_sale">{{ $result['price_sale'] }} </span>
                                
-                               <span style=" " class="price_old">${{ $result['price_product'] }}</span>
+                               <span style=" " class="price_old">{{ $result['price_product'] }}</span>
                            </div>
                        </div>
                    </div>
@@ -528,9 +528,9 @@
                                 <h6><a href="#">{{ $product['name_product'] }}</a></h6>
                                 {{-- <h5>{{ $product['price_product'] }}</h5> --}}
                                 {{-- <div class="product__item__price" style="font-weight: 500;font-size: 15px; color: #79a206;">$30.00 <span style="text-decoration: line-through;font-size: 12px;">$88.00</span></div> --}}
-                                <span style="" class="price_sale">${{ $product['price_sale'] }} </span>
+                                <span style="" class="price_sale">{{ $product['price_sale'] }} </span>
                                 
-                                <span style=" " class="price_old">${{ $product['price_product'] }}</span>
+                                <span style=" " class="price_old">{{ $product['price_product'] }}</span>
                             </div>
                         </form>
                         </div>

@@ -93,7 +93,6 @@ class checkoutController extends Controller
             Session::put('id_coupon', null);
         Session::put('percent',null);
         }
-        Session::put('cart',null);
 
     return Redirect::to('/show_checkout')->withInput();
     // return view('user.shop.checkout');

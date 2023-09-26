@@ -138,7 +138,7 @@
                             <h4>Đơn hàng</h4>
                             <div class="checkout__order__products">Sản phẩm <span>Tổng</span></div>
                             <ul>
-                                @foreach ( $carts   as $cart)
+                                @foreach ( $carts  as $cart)
                                      <li>{{$cart['name_product'] }} <span>$<?php
                                         $price =$cart['qty']*$cart['price_product'];
                                         echo  $price;

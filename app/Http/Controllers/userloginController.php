@@ -48,7 +48,6 @@ class userloginController extends Controller
             Session::put('account_user',null);
     		Session::put('id_user',null);
             Session::put('email_user',null);
-            Session::put('cart', null);
             return Redirect::to('/');
         }
 }
