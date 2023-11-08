@@ -7,7 +7,7 @@ use DB;
 use App\Models\productModel;
 use App\Models\categoryModel;
 use App\Models\userModel;
-use App\Models\orderModel;
+use App\Models\order_tableModel;
 use App\Models\order_detailModel;
 use Illuminate\Support\Facades\Redirect;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -29,19 +29,19 @@ class orderController extends Controller
 
     public function display(){
         $this->checklogin();
-        $order=orderModel::paginate(4);
+        $order=order_tableModel::paginate(4);
 
         return view('order.order', ['order'=>$order]);
         // return $order;
     }
 
     public function not_order(){
-        $order=orderModel::where('status', 0)->paginate(4);
+        $order=order_tableModel::where('status', 0)->paginate(4);
         return view('order.not_order', ['order'=>$order]);
     }
     public function duyet($id, Request $request){
         $this->checklogin();
-        $order_edit = orderModel::find($id);
+        $order_edit = order_tableModel::find($id);
         $id_user =  $order_edit->id_user;
         $user = userModel::find($id_user);
         $email_user = $user->email_user;
@@ -64,7 +64,7 @@ class orderController extends Controller
         //     $order_edit->save();
           
         // }
-        $order=orderModel::all();
+        $order=order_tableModel::all();
         return redirect()->route('product.order')->with('order',$order);
 
         // return view('order.order', ['order'=>$order,'check'=>$check ]);
@@ -79,7 +79,7 @@ class orderController extends Controller
 
     public function delete($id){
         $this->checklogin();
-        $data = orderModel::find($id);
+        $data = order_tableModel::find($id);
         $data->delete();
         // Session:: put('msg', 'Xóa thành công');
         return redirect()->route('product.order');
